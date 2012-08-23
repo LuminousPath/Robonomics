@@ -5,9 +5,9 @@ CPP  = g++.exe
 CC   = gcc.exe
 WINDRES = windres.exe
 RES  = 
-OBJ  = main.o firm.o individual.o $(RES)
-LINKOBJ  = main.o firm.o individual.o $(RES)
-LIBS =  -L"C:/api/dev-cpp/lib" -mwindows -lopengl32 
+OBJ  = main.o individual.o firm.o $(RES)
+LINKOBJ  = main.o individual.o firm.o $(RES)
+LIBS =  -L"C:/api/dev-cpp/lib"  
 INCS =  -I"C:/api/dev-cpp/include" 
 CXXINCS =  -I"C:/api/dev-cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/api/dev-cpp/include/c++/3.4.2/backward"  -I"C:/api/dev-cpp/include/c++/3.4.2/mingw32"  -I"C:/api/dev-cpp/include/c++/3.4.2"  -I"C:/api/dev-cpp/include" 
 BIN  = Robonomics.exe
@@ -29,8 +29,8 @@ $(BIN): $(OBJ)
 main.o: main.cpp
 	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
 
-firm.o: firm.cpp
-	$(CPP) -c firm.cpp -o firm.o $(CXXFLAGS)
-
 individual.o: individual.cpp
 	$(CPP) -c individual.cpp -o individual.o $(CXXFLAGS)
+
+firm.o: firm.cpp
+	$(CPP) -c firm.cpp -o firm.o $(CXXFLAGS)
