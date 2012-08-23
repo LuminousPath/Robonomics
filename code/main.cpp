@@ -46,14 +46,14 @@ int WINAPI WinMain (HINSTANCE hInstance,
     wc.hCursor = LoadCursor (NULL, IDC_ARROW);
     wc.hbrBackground = (HBRUSH) GetStockObject (BLACK_BRUSH);
     wc.lpszMenuName = NULL;
-    wc.lpszClassName = "GLSample";
+    wc.lpszClassName = "Robonomics";
     RegisterClass (&wc);
 
     /* create main window */
     hWnd = CreateWindow (
-      "GLSample", "OpenGL Sample", 
+      "Robonomics", "Robonomics", 
       WS_CAPTION | WS_POPUPWINDOW | WS_VISIBLE,
-      0, 0, 256, 256,
+      0, 0, 1920, 1024,
       NULL, NULL, hInstance, NULL);
 
     /* enable OpenGL for the window */
@@ -79,22 +79,29 @@ int WINAPI WinMain (HINSTANCE hInstance,
         else
         {
             /* OpenGL animation code goes here */
-
+            //set background color
             glClearColor (0.0f, 0.0f, 0.0f, 0.0f);
+            //clean the screen before rewriting
             glClear (GL_COLOR_BUFFER_BIT);
-
+            //some matrix operation
             glPushMatrix ();
+            //rotate frame
             glRotatef (theta, 0.0f, 0.0f, 1.0f);
+            //build triangle
             glBegin (GL_TRIANGLES);
+            //define colors and coordinates for triangle
             glColor3f (1.0f, 0.0f, 0.0f);   glVertex2f (0.0f, 1.0f);
             glColor3f (0.0f, 1.0f, 0.0f);   glVertex2f (0.87f, -0.5f);
             glColor3f (0.0f, 0.0f, 1.0f);   glVertex2f (-0.87f, -0.5f);
+            //
             glEnd ();
+            //some matrix operation
             glPopMatrix ();
 
             SwapBuffers (hDC);
-
+            //change location theta
             theta += 1.0f;
+            //sleep for a bit
             Sleep (1);
         }
     }
