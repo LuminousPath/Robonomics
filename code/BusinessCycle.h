@@ -1,5 +1,6 @@
 #include <vector>
 #include "Firm.h"
+#include "Individual.h"
 
 class BusinessCycle{
       private:

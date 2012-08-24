@@ -7,6 +7,7 @@ class Simulation{
               std::vector<Individual*> WorkForce;
               std::vector<Firm*> AllFirms;
       public:
-             Simulation();
+             Simulation(int);
+             ~Simulation();
              
       };
