@@ -15,6 +15,9 @@
 *.la
 *.a
 
+# Dev C++ project specific files
+*.layout
+
 #### LaTeX #####
 
 *.acn
