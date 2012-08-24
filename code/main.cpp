@@ -1,5 +1,6 @@
 #include <cstdlib>
 #include <iostream>
+#include "firm.h"
 
 using namespace std;
 
