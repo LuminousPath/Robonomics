@@ -6,7 +6,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    Simulation * sim = new Simulation(0);
+    Simulation * sim = new Simulation(2383838);
     system("PAUSE");
     return EXIT_SUCCESS;
 }

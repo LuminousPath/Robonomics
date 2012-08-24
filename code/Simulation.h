@@ -1,6 +1,8 @@
 #include "Individual.h"
 #include "Firm.h"
 #include <vector>
+#include <iostream>
+#include <string>
 
 class Simulation{
       private:
@@ -9,5 +11,7 @@ class Simulation{
       public:
              Simulation(int);
              ~Simulation();
+             
+              void printCrap(int n, int k);
              
       };
