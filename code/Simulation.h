@@ -1,8 +1,11 @@
+#include "Individual.h"
+#include "Firm.h"
+#include <vector>
 
 class Simulation{
       private:
-              vector<Individual*> workforce;
-              vector<Firm*> AllFirms;
+              std::vector<Individual*> WorkForce;
+              std::vector<Firm*> AllFirms;
       public:
              Simulation();
              

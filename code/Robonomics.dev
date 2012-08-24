@@ -39,28 +39,8 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit2]
-FileName=individual.cpp
-CompileCpp=1
-Folder=Robonomics
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit3]
-FileName=firm.cpp
-CompileCpp=1
-Folder=Robonomics
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit4]
-FileName=firm.h
+FileName=Simulation.cpp
 CompileCpp=1
 Folder=Robonomics
 Compile=1
@@ -70,7 +50,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit5]
-FileName=individual.h
+FileName=Simulation.h
 CompileCpp=1
 Folder=Robonomics
 Compile=1
@@ -98,7 +78,7 @@ ProductVersion=
 AutoIncBuildNr=0
 
 [Unit6]
-FileName=BusinessCycle.cpp
+FileName=Structs.h
 CompileCpp=1
 Folder=Robonomics
 Compile=1
@@ -108,7 +88,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit7]
-FileName=BusinessCycle.h
+FileName=Firm.cpp
 CompileCpp=1
 Folder=Robonomics
 Compile=1
@@ -118,7 +98,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit8]
-FileName=Simulation.cpp
+FileName=Firm.h
 CompileCpp=1
 Folder=Robonomics
 Compile=1
@@ -128,7 +108,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit9]
-FileName=Simulation.h
+FileName=Individual.cpp
 CompileCpp=1
 Folder=Robonomics
 Compile=1
@@ -138,7 +118,27 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit10]
-FileName=Structs.h
+FileName=Individual.h
+CompileCpp=1
+Folder=Robonomics
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit2]
+FileName=BusinessCycle.cpp
+CompileCpp=1
+Folder=Robonomics
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit3]
+FileName=BusinessCycle.h
 CompileCpp=1
 Folder=Robonomics
 Compile=1

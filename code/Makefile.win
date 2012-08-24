@@ -5,8 +5,8 @@ CPP  = g++.exe
 CC   = gcc.exe
 WINDRES = windres.exe
 RES  = 
-OBJ  = main.o individual.o firm.o $(RES)
-LINKOBJ  = main.o individual.o firm.o $(RES)
+OBJ  = main.o BusinessCycle.o Simulation.o Firm.o Individual.o $(RES)
+LINKOBJ  = main.o BusinessCycle.o Simulation.o Firm.o Individual.o $(RES)
 LIBS =  -L"C:/api/dev-cpp/lib"  
 INCS =  -I"C:/api/dev-cpp/include" 
 CXXINCS =  -I"C:/api/dev-cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/api/dev-cpp/include/c++/3.4.2/backward"  -I"C:/api/dev-cpp/include/c++/3.4.2/mingw32"  -I"C:/api/dev-cpp/include/c++/3.4.2"  -I"C:/api/dev-cpp/include" 
@@ -29,8 +29,14 @@ $(BIN): $(OBJ)
 main.o: main.cpp
 	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
 
-individual.o: individual.cpp
-	$(CPP) -c individual.cpp -o individual.o $(CXXFLAGS)
+BusinessCycle.o: BusinessCycle.cpp
+	$(CPP) -c BusinessCycle.cpp -o BusinessCycle.o $(CXXFLAGS)
 
-firm.o: firm.cpp
-	$(CPP) -c firm.cpp -o firm.o $(CXXFLAGS)
+Simulation.o: Simulation.cpp
+	$(CPP) -c Simulation.cpp -o Simulation.o $(CXXFLAGS)
+
+Firm.o: Firm.cpp
+	$(CPP) -c Firm.cpp -o Firm.o $(CXXFLAGS)
+
+Individual.o: Individual.cpp
+	$(CPP) -c Individual.cpp -o Individual.o $(CXXFLAGS)

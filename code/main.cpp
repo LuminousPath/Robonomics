@@ -1,6 +1,6 @@
 #include <cstdlib>
 #include <iostream>
-#include "firm.h"
+#include "Firm.h"
 
 using namespace std;
 

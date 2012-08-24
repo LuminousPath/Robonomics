@@ -1,10 +1,10 @@
 #include <vector>
-#include "firm.h"
+#include "Firm.h"
 
 class BusinessCycle{
       private:
-              vector<firm*> firmindex;
-              vector<individual*> unemployed;
+              vector<Firm*> firmindex;
+              vector<Individual*> unemployed;
               product productID;
       public:
              BusinessCycle();
