@@ -1,7 +1,7 @@
 [Project]
 FileName=Robonomics.dev
 Name=Robonomics
-UnitCount=13
+UnitCount=11
 Type=1
 Ver=1
 ObjFiles=
@@ -30,7 +30,7 @@ CompilerSet=0
 CompilerSettings=
 
 [Unit3]
-FileName=Simulation.h
+FileName=Firm.h
 Folder=Robonomics
 Compile=1
 Link=1
@@ -40,7 +40,7 @@ BuildCmd=
 CompileCpp=1
 
 [Unit5]
-FileName=main.cpp
+FileName=Individual.h
 CompileCpp=1
 Folder=Robonomics
 Compile=1
@@ -50,7 +50,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit7]
-FileName=Simulation.cpp
+FileName=Types.h
 Folder=Robonomics
 Compile=1
 Link=1
@@ -60,26 +60,6 @@ BuildCmd=
 CompileCpp=1
 
 [Unit8]
-FileName=Robonomics.layout
-CompileCpp=1
-Folder=Robonomics
-Compile=0
-Link=0
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit9]
-FileName=Types.h
-CompileCpp=1
-Folder=Robonomics
-Compile=1
-Link=1
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
-[Unit10]
 FileName=BusinessCycle.cpp
 CompileCpp=1
 Folder=Robonomics
@@ -89,8 +69,28 @@ Priority=1000
 OverrideBuildCmd=0
 BuildCmd=
 
-[Unit11]
+[Unit9]
 FileName=Individual.cpp
+CompileCpp=1
+Folder=Robonomics
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit10]
+FileName=Firm.cpp
+CompileCpp=1
+Folder=Robonomics
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit11]
+FileName=Structs.h
 CompileCpp=1
 Folder=Robonomics
 Compile=1
@@ -187,17 +187,8 @@ ProductName=
 ProductVersion=
 AutoIncBuildNr=0
 
-[Unit1]
-FileName=Makefile.win
-Folder=Robonomics
-Compile=0
-Link=0
-Priority=1000
-OverrideBuildCmd=0
-BuildCmd=
-
 [Unit2]
-FileName=BusinessCycle.h
+FileName=Simulation.h
 CompileCpp=1
 Folder=Robonomics
 Compile=1
@@ -207,7 +198,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit4]
-FileName=Firm.h
+FileName=main.cpp
 CompileCpp=1
 Folder=Robonomics
 Compile=1
@@ -217,7 +208,17 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit6]
-FileName=Individual.h
+FileName=Simulation.cpp
+CompileCpp=1
+Folder=Robonomics
+Compile=1
+Link=1
+Priority=1000
+OverrideBuildCmd=0
+BuildCmd=
+
+[Unit1]
+FileName=BusinessCycle.h
 CompileCpp=1
 Folder=Robonomics
 Compile=1
