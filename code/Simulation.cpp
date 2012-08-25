@@ -4,7 +4,7 @@
 Simulation::Simulation(int x){
      srand ( time(NULL) );
      int k = 0;
-     
+     //My name is chet, and I approve this comment.
      //LOL ARE YOU KIDDING ME THIS IS THE GREATEST PROTOTYPE EVER
      for(int i = 0; i < x; i++) printCrap(k++,7);
 }
