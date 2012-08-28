@@ -18,6 +18,9 @@
 # Dev C++ project specific files
 *.layout
 
+# random visual studio c++ stuff
+Robonomics/
+
 #### LaTeX #####
 
 *.acn

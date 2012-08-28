@@ -1,8 +1,9 @@
+#include <bitset>
 #include "Types.h"
 
 class Firm{
       private:
-              Product companyproduct;
+              gType companyproduct;
               double capital;
               double productivity;
               

@@ -2,15 +2,20 @@
 #include "time.h"
 
 Simulation::Simulation(int x){
-     srand ( time(NULL) );
-     int k = 0;
-       
-     for(int i = 0; i < x; i++) printCrap(k++,7);
-}
+    /*
+	//testing basic Hamming Distance function
+	gType p1 = 127, p2 = 128;
+	
+	//this should be 255
+	std::cout<< " " <<getHammingDistance(p1,p2);
+	*/
+	
+	/*
+	//testing basic Hamming Distance function
+	gType p1 = 127, p2 = 126;
+	
+	// this should be 1
+	std::cout<< " " <<getHammingDistance(p1,p2);
 
-void Simulation::printCrap(int n,int k){
-     
-     int i = rand() % 127 + 8;
-     std::cout << std::string(n%10, ' ');
-     std::cout << std::string(1, i);
+	*/
 }

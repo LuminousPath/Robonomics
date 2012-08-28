@@ -1,3 +1,3 @@
 #include <bitset>
 
-typedef std::bitset<64> Product;
+typedef std::bitset<64> gType;

@@ -6,7 +6,7 @@ class BusinessCycle{
       private:
               std::vector<Firm*> firmindex;
               std::vector<Individual*> unemployed;
-              Product productID;
+
       public:
              BusinessCycle();
              void Cycle();
