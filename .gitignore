@@ -17,6 +17,7 @@
 
 # Dev C++ project specific files
 *.layout
+*.win
 
 # random visual studio c++ stuff
 Robonomics/
