@@ -1,5 +1,4 @@
 #include "Simulation.h"
-#include "time.h"
 
 Simulation::Simulation(int x){
 
