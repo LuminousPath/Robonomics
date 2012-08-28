@@ -6,7 +6,7 @@ class Individual{
               double productivity;
               int lifespan;
               int age;
-			  gType skillset;
+			  gType skillSet;
       public:
              Individual();    
              Individual(gType p1, gType p2, bool crossoverFlag);             

@@ -7,9 +7,10 @@
 
 class Simulation{
       private:
-              std::vector<Individual*> WorkForce;
-              std::vector<Firm*> AllFirms;
+              std::vector<Individual*> workForce;
+			  std::vector<Individual*> unemployed;
+              std::vector<Firm*> allFirms;
       public:
-             Simulation(int x);
+             Simulation(int populationSize, int economySize, double delta);
              ~Simulation();
       };

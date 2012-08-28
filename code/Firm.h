@@ -3,7 +3,7 @@
 
 class Firm{
       private:
-              gType companyproduct;
+              gType companyProduct;
               double capital;
               double productivity;
               
