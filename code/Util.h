@@ -1,6 +1,10 @@
+#pragma once
+
 #include "Types.h"
 #include <time.h>
 #include <vector>
+#include <cmath>
+
 
 
 int getHammingDistance(gType v1, gType v2);

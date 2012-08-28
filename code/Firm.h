@@ -1,5 +1,10 @@
+#pragma once
+
 #include <bitset>
 #include "Types.h"
+
+
+
 
 class Firm{
       private:
@@ -10,3 +15,4 @@ class Firm{
       public:
              Firm();             
       };
+

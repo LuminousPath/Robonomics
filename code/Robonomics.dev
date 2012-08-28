@@ -1,7 +1,7 @@
 [Project]
 FileName=Robonomics.dev
 Name=Robonomics
-UnitCount=12
+UnitCount=14
 Type=1
 Ver=1
 ObjFiles=
@@ -110,7 +110,7 @@ OverrideBuildCmd=0
 BuildCmd=
 
 [Unit13]
-FileName=Structs.h
+FileName=globals.h
 Folder=Robonomics
 Compile=1
 Link=1
@@ -120,7 +120,7 @@ BuildCmd=
 CompileCpp=1
 
 [Unit14]
-FileName=Types.h
+FileName=globals.cpp
 CompileCpp=1
 Folder=Robonomics
 Compile=1

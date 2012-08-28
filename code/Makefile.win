@@ -5,8 +5,8 @@ CPP  = g++.exe
 CC   = gcc.exe
 WINDRES = windres.exe
 RES  = 
-OBJ  = main.o Simulation.o BusinessCycle.o Individual.o Firm.o Util.o $(RES)
-LINKOBJ  = main.o Simulation.o BusinessCycle.o Individual.o Firm.o Util.o $(RES)
+OBJ  = main.o Simulation.o BusinessCycle.o Individual.o Firm.o Util.o globals.o $(RES)
+LINKOBJ  = main.o Simulation.o BusinessCycle.o Individual.o Firm.o Util.o globals.o $(RES)
 LIBS =  -L"C:/api/dev-cpp/lib"  
 INCS =  -I"C:/api/dev-cpp/include" 
 CXXINCS =  -I"C:/api/dev-cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/api/dev-cpp/include/c++/3.4.2/backward"  -I"C:/api/dev-cpp/include/c++/3.4.2/mingw32"  -I"C:/api/dev-cpp/include/c++/3.4.2"  -I"C:/api/dev-cpp/include" 
@@ -43,3 +43,6 @@ Firm.o: Firm.cpp
 
 Util.o: Util.cpp
 	$(CPP) -c Util.cpp -o Util.o $(CXXFLAGS)
+
+globals.o: globals.cpp
+	$(CPP) -c globals.cpp -o globals.o $(CXXFLAGS)

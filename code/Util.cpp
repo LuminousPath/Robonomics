@@ -13,7 +13,7 @@ gType getRandomChild(gType p1, gType p2){
 
 	for(int i = 0; i < p1.size(); i++){
 		int n = getRandomInt(0,2);
-		child.at(i) = genePool.at(n).at(i);
+		child.set(i, genePool[n][i]);
 	}
 	return child;
 }
@@ -30,12 +30,12 @@ gType crossOver(gType p1, gType p2){
 	//randomly pick the first parent sequence
 	int n = getRandomInt(0,2);
 	for(int i = 0; i < p1.size()-split; i++){
-		child.at(i) = genePool.at(n).at(i);
+		child.set(i, genePool[n][i]);
 	}
 	n+=1;
 	n%=2;
 	for(int i = split; i < p1.size(); i++){
-		child.at(i) = genePool.at(n).at(i);
+		child.set(i, genePool[n][i]);
 	}
 	return child;
 }
@@ -43,9 +43,9 @@ gType crossOver(gType p1, gType p2){
 //mutate a gType randomly using exclusive or
 gType mutate(gType c1){
 	for(int i = 0; i < c1.size(); i++){
-		bool t = c1.at(i);
+		bool t = c1[i];
 		t ^= getRandomInt(0,2);
-		c1.at(i) = t;
+		c1.set(i,t);
 	}
 	return c1;
 }
@@ -64,7 +64,7 @@ int getRandomInt(int l, int h){
 }
 
 double getDelta(double x1, double x2){
-	return abs(x1-x2);
+	return fabs((double)(x1-x2));
 }
 
 bool aboveThresh(double x1, double x2, double thresh){

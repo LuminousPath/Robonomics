@@ -1,6 +1,8 @@
-#include <vector>
+#pragma once
+
 #include "Firm.h"
 #include "Individual.h"
+#include <vector>
 
 class BusinessCycle{
       private:

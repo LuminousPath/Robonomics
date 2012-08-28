@@ -1,10 +1,13 @@
 #include "Individual.h"
 
 Individual::Individual(){
+	//bitset of all 0s
 	gType p1 = 0;
-	gType p2 = 18446744073709551615;
-	gType c1 = getRandomChild(p1,p2);	
-	skillSet = c1;
+	//bitset of all 1s: (2^64)-1
+	unsigned long long m = (unsigned long long)pow(2.0,64);
+	gType p2(m);
+	//get random bits from each parent to create the child
+	skillSet = getRandomChild(p1,p2);
 }
 
 Individual::Individual(gType p1, gType p2,bool crossoverFlag){

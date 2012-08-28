@@ -1,6 +1,6 @@
 #include "Simulation.h"
 
-Simulation::Simulation(int x){
+Simulation::Simulation(int populationSize, int economySize, double delta){
 
     /*
 	//testing basic Hamming Distance function
