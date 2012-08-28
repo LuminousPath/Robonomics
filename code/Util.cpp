@@ -1,6 +1,6 @@
 #include "Util.h"
 
-unsigned long getHammingDistance(gType v1, gType v2){
+int getHammingDistance(gType v1, gType v2){
 	return (v1 ^ v2).to_ulong();
 }
 
@@ -50,15 +50,19 @@ gType mutate(gType c1){
 	return c1;
 }
 
-//get a random integer between l and h
+//get a random positive integer between l and h (non-inclusive)
 int getRandomInt(int l, int h){
 	h = abs(h);
 	l = abs(l);
-	
+	//size check
 	if(l > h){
 		int t = l;
 		l = h;
 		h = t;
 	}
   return (rand() % h + l);
+}
+
+double getDelta(double x1, double x2){
+	return abs(x1-x2);
 }
