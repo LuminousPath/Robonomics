@@ -1,13 +1,12 @@
 #include "Simulation.h"
 
-Simulation::Simulation(int populationSize, int economySize, double delta){
+Simulation::Simulation(int populationSize, int economySize, double delta, int maxBusinessCycles){
 
     /*
 	//testing basic Hamming Distance function
 	gType p1 = 127, p2 = 128;
-	
 	//this should be 255
-	std::cout<< " " <<getHammingDistance(p1,p2);
+	std::cout<< " " << getHammingDistance(p1,p3);
 	*/
 	
 	/*
