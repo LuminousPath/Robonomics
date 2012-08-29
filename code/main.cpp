@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[])
 {
-    Simulation * sim = new Simulation(12,12,.2);
+    Simulation * sim = new Simulation();
     system("PAUSE");
     return EXIT_SUCCESS;
 }

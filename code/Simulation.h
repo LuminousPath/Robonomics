@@ -12,6 +12,6 @@ class Simulation{
               std::vector<Individual*> workForce;
               std::vector<Firm*> allFirms;
       public:
-             Simulation(int populationSize, int economySize, double delta);
+             Simulation();
              ~Simulation();
       };
