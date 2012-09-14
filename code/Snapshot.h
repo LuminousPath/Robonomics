@@ -1,7 +1,7 @@
 #include <libxml/encoding.h>
 #include <libxml/xmlwriter.h>
 
-Class Shapshot{
+Class Snapshot{
     private:
         
     public:
