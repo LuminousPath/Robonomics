@@ -1,4 +1,5 @@
 #include "Configurator.h"
+#include <cstdlib>
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -11,7 +12,7 @@ Configurator::Configurator(char* filename){
       hire_fire_threshold = 0;
       modicum_of_acceptance = 0;
       cycles = 0;
-                                 
+
       std::ifstream infile;
       std::string line;
       infile.open(filename, std::ifstream::in);

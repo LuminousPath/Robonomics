@@ -10,9 +10,10 @@ class Simulation{
               std::vector<Individual*> workForce;
               std::vector<Firm*> allFirms;
               std::vector<gType> productlist;
+              int numcycles;
       public:
              Simulation(Configurator*);
              ~Simulation();
-             void setup(Configurator*);
              void run();
+             bool setup(Configurator*);
       };

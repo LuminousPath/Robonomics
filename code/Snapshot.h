@@ -1,9 +1,11 @@
-#include <libxml/encoding.h>
-#include <libxml/xmlwriter.h>
+//#include <libxml/encoding.h>
+//#include <libxml/xmlwriter.h>
 
-Class Snapshot{
+#pragma once
+
+class Snapshot{
     private:
-        
+
     public:
-        
+
 };

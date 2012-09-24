@@ -1,4 +1,5 @@
 #include "Util.h"
+#include <stdlib.h>
 
 int getHammingDistance(gType v1, gType v2){
 	return (v1 ^ v2).to_ulong();
@@ -52,8 +53,8 @@ gType mutate(gType c1){
 
 //get a random positive integer between l and h (non-inclusive)
 int getRandomInt(int l, int h){
-	h = abs(h);
-	l = abs(l);
+	h = std::abs(h);
+	l = std::abs(l);
 	//size check
 	if(l > h){
 		int t = l;
