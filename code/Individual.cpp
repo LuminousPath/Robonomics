@@ -17,8 +17,7 @@ Individual::Individual(gType p1, gType p2,bool crossoverFlag){
 
 double Individual::getproductivity(gType ProductID)
 {
-     double trueproductivity = getHammingDistance(ProductID, skillSet) / sizeof(gType);
-     return trueproductivity;
+     return 1 - (getHammingDistance(ProductID, skillSet) / sizeof(gType));
 }
 
 

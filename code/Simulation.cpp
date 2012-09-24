@@ -43,7 +43,7 @@ bool Simulation::setup(Configurator* configuration){
                  addworkers.push_back(*it);
              }
              srand(time(NULL));
-             allFirms.push_back(new Firm(configuration->get_avg_starting_capital(), addworkers));
+             allFirms.push_back(new Firm(getRandomInt(0, configuration->get_avg_starting_capital() * 2), addworkers));
              std::cout << allFirms.at(firmcounter)->getproductivity();
              firmcounter++;
              addworkers.clear();
