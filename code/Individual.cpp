@@ -15,4 +15,9 @@ Individual::Individual(gType p1, gType p2,bool crossoverFlag){
 	else skillSet = getRandomChild(p1,p2);
 }
 
+double Individual::getproductivity()
+{
+     return productivity;
+}
+
 

@@ -12,5 +12,6 @@ class Individual{
 			  gType skillSet;
       public:
              Individual();    
-             Individual(gType p1, gType p2, bool crossoverFlag);             
+             Individual(gType p1, gType p2, bool crossoverFlag);
+             double getproductivity();       
       };

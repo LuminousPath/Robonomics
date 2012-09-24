@@ -1,21 +1,38 @@
 #include "Simulation.h"
+#include <stdlib.h>
+#include <time.h>
 
 
 
-Simulation::Simulation(){
+Simulation::Simulation(Configurator* filename){
+    if(filename->initialized == true)
+    {
+         Simulation::setup(filename);
+         std::cout << "Initialized OK\n";
+    }
+    else
+    {
+        std::cout << "error in config initialization\n";
+    }
 
-    /*
-	//testing basic Hamming Distance function
-	gType p1 = 127, p2 = 128;
-	//this should be 255
-	std::cout<< " " << getHammingDistance(p1,p3);
-	*/
-	
-	/*
-	//testing basic Hamming Distance function
-	gType p1 = 127, p2 = 126;
-	
-	// this should be 1
-	std::cout<< " " <<getHammingDistance(p1,p2);
-	*/
+}
+
+void Simulation::setup(Configurator* configuration){
+     int firmcounter = 0;
+     
+     for(int counter = 0; counter < (configuration->get_startfirms() * configuration->get_start_individuals()); counter++)
+     {
+             workForce.push_back(new Individual());
+     }
+     
+     while(firmcounter < configuration->get_startfirms())
+     {
+             srand(time(NULL));
+             allFirms.push_back(new Firm(configuration->get_avg_starting_capital(), configuration->get_start_individuals()));
+             std::cout << allFirms.at(firmcounter)->getproductivity();
+             firmcounter++;
+     }
+}
+
+void Simulation::run(){
 }

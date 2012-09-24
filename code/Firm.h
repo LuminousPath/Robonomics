@@ -2,6 +2,8 @@
 
 #include <bitset>
 #include "Types.h"
+#include "Individual.h"
+#include <vector>
 
 
 
@@ -10,9 +12,12 @@ class Firm{
       private:
               gType companyProduct;
               double capital;
-              double productivity;
+              std::vector<Individual*> employees;
               
       public:
-             Firm();             
+             Firm(int, int);
+             Firm(int, std::vector<Individual*>); 
+             double getcapital();
+             double getproductivity();          
       };
 
