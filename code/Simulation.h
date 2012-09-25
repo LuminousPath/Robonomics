@@ -10,6 +10,7 @@ class Simulation{
               std::vector<Individual*> workForce;
               std::vector<Firm*> allFirms;
               std::vector<gType> productlist;
+              std::vector<Individual*> unemployedpeeps;
               int numcycles;
       public:
              Simulation(Configurator*);

@@ -11,7 +11,7 @@ class BusinessCycle{
               std::vector<Individual*> unemployed;
 
       public:
-             BusinessCycle(std::vector<Firm*>, std::vector<Individual*>);
+             BusinessCycle(std::vector<Firm*>, std::vector<Individual*>, std::vector<Individual*>);
              Snapshot firstcycle();
              Snapshot cycleout();
              void cyclein(Snapshot);

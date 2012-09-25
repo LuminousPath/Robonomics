@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     else{
          Configurator* config = new Configurator(argv[1]);
          Simulation * sim = new Simulation(config);
-         //sim->run();
+         sim->run();
     }
     std::cin.get();
     return EXIT_SUCCESS;

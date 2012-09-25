@@ -2,9 +2,10 @@
 #include <iostream>
 #include <vector>
 
-Snapshot::Snapshot()
+Snapshot::Snapshot(std::vector<Individual*> unemployedin, std::vector<Firm*> Firmlistin)
 {
-
+    unemployed = unemployedin;
+    Firmlist = Firmlistin;
 }
 
 void Snapshot::print_toscreen()
@@ -14,17 +15,17 @@ void Snapshot::print_toscreen()
      std::vector<Firm*>::iterator it = Firmlist.begin();
      Firm* firmpointer;
      std::vector<Individual*>::iterator it2 = unemployed.begin();
-     std::vector<Individual*>::iterator it3;
+     int it3;
      Individual* personpointer;
-     
+
      for(; it < Firmlist.end(); it++)
      {
-           
+
            firmpointer = *it;
            std::cout << "Firm: " << counter + 1 << std::endl << "Productivity: " << firmpointer->getproductivity() << std::endl << "capital: " << firmpointer->getcapital() << std::endl;
-           for(it3 = firmpointer->getemployees().begin(); it3 < firmpointer->getemployees().end(); it3++)
+           for(it3 = 0; it3 < firmpointer->getemployees().size(); it3++)
            {
-                   personpointer = *it3;
+                   personpointer = firmpointer->getemployees().at(it3);
                    std::cout << "Person: " << counter2 + 1 << std::endl << "Productivity: " << personpointer->getproductivity(firmpointer->getcompanyProduct()) << std::endl << "Age: " << personpointer->getage() << std::endl << "lifespan: " << personpointer->getlifespan() << std::endl;
                    counter2++;
            }

@@ -1,5 +1,6 @@
 #include "Individual.h"
 #include <iostream>
+#include <limits.h>
 
 Individual::Individual(){
 	//bitset of all 0s
@@ -21,11 +22,12 @@ Individual::Individual(gType p1, gType p2,bool crossoverFlag){
 double Individual::getproductivity(gType ProductID)
 {
        unsigned long test;
-       test = getHammingDistance(ProductID, skillSet);
-       std::cout << test << std::endl;
+       //test = getHammingDistance(ProductID, skillSet);
+       //std::cout << "Gethammingidstance"<< test << std::endl;
        if(ProductID != NULL)
        {
-            return 1 - (getHammingDistance(ProductID, skillSet) / sizeof(gType));
+            //std::cout << getHammingDistance(ProductID, skillSet) << std::endl;
+            return 1 - (double)(getHammingDistance(ProductID, skillSet) / (double)ULLONG_MAX);
        }
        else
           return 0;

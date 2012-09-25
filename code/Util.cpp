@@ -1,16 +1,25 @@
 #include "Util.h"
 #include <stdlib.h>
+#include <stdio.h>
+#include <string>
+#include <bitset>
 #include <iostream>
 #include <exception>
 
-unsigned long getHammingDistance(gType v1, gType v2)
+unsigned long long getHammingDistance(gType v1, gType v2)
 {
-    unsigned long derp;
+    unsigned long long derp;
+    std::string temp;
     try{
-    derp = (v1 ^ v2).to_ulong();
+           temp = (v1^v2).to_string<char,std::char_traits<char>,std::allocator<char> >();
+           //std::cout << temp << std::endl;
+           derp = strtoull(temp.c_str(), (char**)NULL, 2);
+           //std::cout << "gethammingdistancevalue" << derp << std::endl;
+           //derp = strtoull((v1 ^ v2).to_string<char,std::char_traits<char>,std::allocator<char> >().c_str(), (char**)NULL, 10);
+           //printf("value: %llu \n", derp);
     }
     catch(std::exception& e){
-           std::cout << e.what() << std::endl;         
+           std::cout << "Exception: "<< e.what() << std::endl;
     }
 	return derp;
 }

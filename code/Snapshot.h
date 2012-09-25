@@ -11,7 +11,7 @@ class Snapshot{
         std::vector<Individual*> unemployed;
         std::vector<Firm*> Firmlist;
     public:
-        Snapshot();
+        Snapshot(std::vector<Individual*> unemployed, std::vector<Firm*> Firmlist);
         void print_toscreen();
         void print_toXML();
 

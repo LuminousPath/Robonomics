@@ -43,7 +43,7 @@ double Firm::getproductivity()
        {
             temp = *it;
             productivity += temp->getproductivity(companyProduct);
-            std::cout << ULLONG_MAX << std::endl << temp->getproductivity(companyProduct) << std::endl;
+            //std::cout << (double)ULLONG_MAX << std::endl << temp->getproductivity(companyProduct) << std::endl;
        }
        return productivity / employees.size();
 
