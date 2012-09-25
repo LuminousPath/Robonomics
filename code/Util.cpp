@@ -5,6 +5,7 @@
 #include <bitset>
 #include <iostream>
 #include <exception>
+#include <time.h>
 
 unsigned long long getHammingDistance(gType v1, gType v2)
 {
@@ -72,6 +73,7 @@ gType mutate(gType c1){
 
 //get a random positive integer between l and h (non-inclusive)
 int getRandomInt(int l, int h){
+
 	h = std::abs(h);
 	l = std::abs(l);
 	//size check

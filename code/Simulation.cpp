@@ -24,6 +24,7 @@ Simulation::Simulation(Configurator* filename){
 }
 
 bool Simulation::setup(Configurator* configuration){
+     srand(time(NULL));
      int firmcounter = 0;
      int iter = 0;
      Individual* indiepointer;

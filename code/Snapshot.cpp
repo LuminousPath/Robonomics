@@ -22,7 +22,7 @@ void Snapshot::print_toscreen()
      {
 
            firmpointer = *it;
-           std::cout << "Firm: " << counter + 1 << std::endl << "Productivity: " << firmpointer->getproductivity() << std::endl << "capital: " << firmpointer->getcapital() << std::endl;
+           std::cout << std::endl << "Firm: " << counter + 1 << std::endl << "Productivity: " << firmpointer->getproductivity() << std::endl << "capital: " << firmpointer->getcapital() << std::endl;
            for(it3 = 0; it3 < firmpointer->getemployees().size(); it3++)
            {
                    personpointer = firmpointer->getemployees().at(it3);
@@ -31,6 +31,7 @@ void Snapshot::print_toscreen()
            }
            counter++;
      }
+     std::cout << std::endl << "Unemployed:" << std::endl;
      for(; it2 < unemployed.end(); it2++)
      {
            personpointer = *it2;
