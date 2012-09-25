@@ -1,8 +1,18 @@
 #include "Util.h"
 #include <stdlib.h>
+#include <iostream>
+#include <exception>
 
-int getHammingDistance(gType v1, gType v2){
-	return (v1 ^ v2).to_ulong();
+unsigned long getHammingDistance(gType v1, gType v2)
+{
+    unsigned long derp;
+    try{
+    derp = (v1 ^ v2).to_ulong();
+    }
+    catch(std::exception& e){
+           std::cout << e.what() << std::endl;         
+    }
+	return derp;
 }
 
 //randomly pick a parent to fulfill genetic requirements at each increment in the genome

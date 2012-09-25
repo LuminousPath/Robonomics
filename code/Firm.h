@@ -18,6 +18,8 @@ class Firm{
              Firm(int, int);
              Firm(int, std::vector<Individual*>); 
              double getcapital();
-             double getproductivity();          
+             double getproductivity();
+             gType getcompanyProduct();
+             std::vector<Individual*> getemployees();         
       };
 

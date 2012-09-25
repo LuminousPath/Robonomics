@@ -6,7 +6,7 @@
 
 class Individual{
       private:
-              double productivity;
+              //double productivity;
               int lifespan;
               int age;
 			  gType skillSet;
@@ -14,4 +14,6 @@ class Individual{
              Individual();
              Individual(gType p1, gType p2, bool crossoverFlag);
              double getproductivity(gType);
+             int getlifespan();
+             int getage();
       };
