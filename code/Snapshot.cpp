@@ -1,6 +1,8 @@
 #include "Snapshot.h"
 #include <iostream>
 #include <vector>
+#include <libxml/encoding.h>
+#include <libxml/xmlwriter.h>
 
 Snapshot::Snapshot(std::vector<Individual*> unemployedin, std::vector<Firm*> Firmlistin)
 {
@@ -40,7 +42,56 @@ void Snapshot::print_toscreen()
      }
 }
 
-void Snapshot::print_toXML()
-{
 
+
+void Snapshot::print_toXML(const char *uri)
+{
+	int rc;
+	xmlTestWriterPtr writer;
+	xmlChar *temp;
+
+	writer = xmlNewTextWriterFilename(uri, 0);
+	if(rc == NULL)
+	{
+		printf("Snapshot.print_toXML: Error creating the xml writer\n");
+		return;
+	}
+	
+	rc = xmlTextWriterStartDocument(writer, NULL, "UTF-8", NULL);
+	if(rc < 0)
+	{
+		printf("Snapshot.print_toXML: Error at xmlTextWriterStartDocument\n");
+		return;
+	}
+
+	rc = xmlTextWriterWriteElement(writer, BAD_CAST "graphml")
+	if(rc < 0)
+	{
+		printf("Snapshot.print_toXML: Error at xmlTextWriterWriteElement 'graphml'\n");
+		return;
+	}
+
+	rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "xmlns", BAD_CAST "http://graphml.graphdrawing.org/xmlns");
+	rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "xmlns:xsi", BAD_CAST "http://www.w3.org/2001/XMLSchema-instance");
+	rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "xsi:schemaLocation", BAD_CAST "http://graphml.graphdrawing.org/xmlns\nhttp://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd");
+
+	rc = xmlTextWriterWriteElement(writer, BAD_CAST "graph");
+	rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "id", BAD_CAST "Simulation");
+	rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "edgedefault", BAD_CAST "undirected");
+
+	for(int c = 0; c < Firmlist.size(); c++)
+	{
+		xmlTextWriterWriteElement(writer, BAD_CAST "node");
+		xmlTextWriterWriteAttribute(writer, BAD_CAST "id", BAD_CAST("Firm" c));
+		
+	} 
+
+	rc = xmlTextWriterEndDocument(writer);
+	if(rc < 0)
+	{
+		printf("Snapshot.print_toXML: Error at xmlTextWriterEndDocument\n");
+		return;
+	}
+
+	xmlFreeTextWriter(writer);
 }
