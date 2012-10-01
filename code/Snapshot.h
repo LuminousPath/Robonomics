@@ -1,5 +1,3 @@
-//#include <libxml/encoding.h>
-//#include <libxml/xmlwriter.h>
 #include <vector>
 #include "Individual.h"
 #include "Firm.h"

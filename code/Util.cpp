@@ -74,8 +74,8 @@ gType mutate(gType c1){
 //get a random positive integer between l and h (non-inclusive)
 int getRandomInt(int l, int h){
 
-	h = std::abs(h);
-	l = std::abs(l);
+	h = std::abs((double)h);
+	l = std::abs((double)l);
 	//size check
 	if(l > h){
 		int t = l;

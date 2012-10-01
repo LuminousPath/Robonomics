@@ -91,7 +91,6 @@ void Snapshot::print_toXML(const char *uri)
 
 	}
 
-
 	rc = xmlTextWriterEndDocument(writer);
 	if(rc < 0)
 	{
