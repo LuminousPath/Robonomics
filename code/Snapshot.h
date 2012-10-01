@@ -13,6 +13,6 @@ class Snapshot{
     public:
         Snapshot(std::vector<Individual*> unemployed, std::vector<Firm*> Firmlist);
         void print_toscreen();
-        void print_toXML();
+        void print_toXML(const char *uri);
 
 };

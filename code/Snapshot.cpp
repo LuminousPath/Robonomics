@@ -1,8 +1,8 @@
 #include "Snapshot.h"
 #include <iostream>
 #include <vector>
-#include <libxml/encoding.h>
-#include <libxml/xmlwriter.h>
+//#include <libxml/encoding.h>
+//#include <libxml/xmlwriter.h>
 
 Snapshot::Snapshot(std::vector<Individual*> unemployedin, std::vector<Firm*> Firmlistin)
 {
@@ -46,7 +46,7 @@ void Snapshot::print_toscreen()
 
 void Snapshot::print_toXML(const char *uri)
 {
-	int rc;
+	/*int rc;
 	xmlTestWriterPtr writer;
 	xmlChar *temp;
 
@@ -56,7 +56,7 @@ void Snapshot::print_toXML(const char *uri)
 		printf("Snapshot.print_toXML: Error creating the xml writer\n");
 		return;
 	}
-	
+
 	rc = xmlTextWriterStartDocument(writer, NULL, "UTF-8", NULL);
 	if(rc < 0)
 	{
@@ -83,8 +83,8 @@ void Snapshot::print_toXML(const char *uri)
 	{
 		xmlTextWriterWriteElement(writer, BAD_CAST "node");
 		xmlTextWriterWriteAttribute(writer, BAD_CAST "id", BAD_CAST("Firm" c));
-		
-	} 
+
+	}
 
 	rc = xmlTextWriterEndDocument(writer);
 	if(rc < 0)
@@ -93,5 +93,5 @@ void Snapshot::print_toXML(const char *uri)
 		return;
 	}
 
-	xmlFreeTextWriter(writer);
+	xmlFreeTextWriter(writer);*/
 }
