@@ -1,6 +1,8 @@
 #include "Snapshot.h"
 #include <iostream>
+#include <stdlib.h>
 #include <vector>
+#include <cstring>
 #include <libxml/encoding.h>
 #include <libxml/xmlwriter.h>
 
@@ -47,7 +49,7 @@ void Snapshot::print_toscreen()
 void Snapshot::print_toXML(const char *uri)
 {
 	int rc;
-	xmlTestWriterPtr writer;
+	xmlTextWriterPtr writer;
 	xmlChar *temp;
 
 	writer = xmlNewTextWriterFilename(uri, 0);
@@ -56,7 +58,7 @@ void Snapshot::print_toXML(const char *uri)
 		printf("Snapshot.print_toXML: Error creating the xml writer\n");
 		return;
 	}
-	
+
 	rc = xmlTextWriterStartDocument(writer, NULL, "UTF-8", NULL);
 	if(rc < 0)
 	{
@@ -64,7 +66,7 @@ void Snapshot::print_toXML(const char *uri)
 		return;
 	}
 
-	rc = xmlTextWriterWriteElement(writer, BAD_CAST "graphml")
+	rc = xmlTextWriterStartElement(writer, BAD_CAST "graphml");
 	if(rc < 0)
 	{
 		printf("Snapshot.print_toXML: Error at xmlTextWriterWriteElement 'graphml'\n");
@@ -75,16 +77,20 @@ void Snapshot::print_toXML(const char *uri)
 	rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "xmlns:xsi", BAD_CAST "http://www.w3.org/2001/XMLSchema-instance");
 	rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "xsi:schemaLocation", BAD_CAST "http://graphml.graphdrawing.org/xmlns\nhttp://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd");
 
-	rc = xmlTextWriterWriteElement(writer, BAD_CAST "graph");
+	rc = xmlTextWriterStartElement(writer, BAD_CAST "graph");
 	rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "id", BAD_CAST "Simulation");
 	rc = xmlTextWriterWriteAttribute(writer, BAD_CAST "edgedefault", BAD_CAST "undirected");
 
+    char buf[12];
 	for(int c = 0; c < Firmlist.size(); c++)
 	{
-		xmlTextWriterWriteElement(writer, BAD_CAST "node");
-		xmlTextWriterWriteAttribute(writer, BAD_CAST "id", BAD_CAST("Firm" c));
-		
-	} 
+		xmlTextWriterStartElement(writer, BAD_CAST "node");
+		snprintf(buf, sizeof(buf), "Firm%d", c);
+		xmlTextWriterWriteAttribute(writer, BAD_CAST "id", BAD_CAST(buf));
+		xmlTextWriterEndElement(writer);
+
+	}
+
 
 	rc = xmlTextWriterEndDocument(writer);
 	if(rc < 0)
