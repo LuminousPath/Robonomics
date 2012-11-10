@@ -21,12 +21,8 @@ Individual::Individual(gType p1, gType p2,bool crossoverFlag){
 
 double Individual::getproductivity(gType ProductID)
 {
-       if(ProductID != NULL)
-       {
-            return 1 - ((double)getHammingDistance(ProductID, skillSet) / (double)ProductID.size());
-       }
-       else
-          return 0;
+       if(ProductID != NULL) return 1 - ((double)getHammingDistance(ProductID, skillSet) / (double)ProductID.size()); 
+       else return 0;
 }
 
 int Individual::getage()

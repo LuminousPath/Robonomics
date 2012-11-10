@@ -69,7 +69,9 @@ int getRandomInt(int l, int h){
 		l = h;
 		h = t;
 	}
-  return (rand() % h + l);
+    int x = 0;
+	while((x =(rand() % h)) < l);
+  return x;
 }
 
 double getDelta(double x1, double x2){
