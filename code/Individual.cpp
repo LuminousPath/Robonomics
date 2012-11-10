@@ -10,8 +10,8 @@ Individual::Individual(){
 	p2.set();
 	//get random bits from each parent to create the child
 	skillSet = getRandomChild(p1,p2);
-	age = getRandomInt(1, 100);
-	lifespan = getRandomInt(50, 99);
+	age = getRandomInt(16, 65);
+	lifespan = getRandomInt(age, 99);
 }
 
 Individual::Individual(gType p1, gType p2,bool crossoverFlag){
@@ -21,13 +21,9 @@ Individual::Individual(gType p1, gType p2,bool crossoverFlag){
 
 double Individual::getproductivity(gType ProductID)
 {
-       unsigned long test;
-       //test = getHammingDistance(ProductID, skillSet);
-       //std::cout << "Gethammingidstance"<< test << std::endl;
        if(ProductID != NULL)
        {
-            //std::cout << getHammingDistance(ProductID, skillSet) << std::endl;
-            return 1 - (double)(getHammingDistance(ProductID, skillSet) / (double)ULLONG_MAX);
+            return 1 - ((double)getHammingDistance(ProductID, skillSet) / (double)ProductID.size());
        }
        else
           return 0;

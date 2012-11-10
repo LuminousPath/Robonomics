@@ -7,7 +7,7 @@
 
 
 
-unsigned long long getHammingDistance(gType v1, gType v2);
+int getHammingDistance(gType v1, gType v2);
 
 gType getRandomChild(gType p1, gType p2);
 

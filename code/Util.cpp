@@ -7,22 +7,9 @@
 #include <exception>
 #include <time.h>
 
-unsigned long long getHammingDistance(gType v1, gType v2)
+int getHammingDistance(gType v1, gType v2)
 {
-    unsigned long long derp;
-    std::string temp;
-    try{
-           temp = (v1^v2).to_string<char,std::char_traits<char>,std::allocator<char> >();
-           //std::cout << temp << std::endl;
-           derp = strtoull(temp.c_str(), (char**)NULL, 2);
-           //std::cout << "gethammingdistancevalue" << derp << std::endl;
-           //derp = strtoull((v1 ^ v2).to_string<char,std::char_traits<char>,std::allocator<char> >().c_str(), (char**)NULL, 10);
-           //printf("value: %llu \n", derp);
-    }
-    catch(std::exception& e){
-           std::cout << "Exception: "<< e.what() << std::endl;
-    }
-	return derp;
+	return (v1^v2).count();
 }
 
 //randomly pick a parent to fulfill genetic requirements at each increment in the genome

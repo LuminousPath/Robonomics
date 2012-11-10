@@ -1,11 +1,11 @@
 #include "BusinessCycle.h"
 #include "Snapshot.h"
 
-BusinessCycle::BusinessCycle(std::vector<Firm*> i_hate_chet, std::vector<Individual*> i_also_hate_chet, std::vector<Individual*> homelesspeople)
+BusinessCycle::BusinessCycle(std::vector<Firm*> fi, std::vector<Individual*> ii, std::vector<Individual*> transients)
 {
-     firmindex = i_hate_chet;
-     all_the_peoples = i_also_hate_chet;
-     unemployed=homelesspeople;
+     firmindex = fi;
+     all_the_peoples = ii;
+     unemployed=transients;
 
 }
 
