@@ -19,6 +19,7 @@ Simulation::Simulation(Configurator* filename){
     else
     {
         std::cout << "error in config initialization\n";
+        exit(0);
     }
 
 }

@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <vector>
 #include <cstring>
-#include <libxml/encoding.h>
-#include <libxml/xmlwriter.h>
+//#include <libxml/encoding.h>
+//#include <libxml/xmlwriter.h>
 
 Snapshot::Snapshot(std::vector<Individual*> unemployedin, std::vector<Firm*> Firmlistin)
 {
@@ -45,7 +45,7 @@ void Snapshot::print_toscreen()
 }
 
 
-
+/*
 void Snapshot::print_toXML(const char *uri)
 {
 	int rc;
@@ -100,3 +100,4 @@ void Snapshot::print_toXML(const char *uri)
 
 	xmlFreeTextWriter(writer);
 }
+*/
