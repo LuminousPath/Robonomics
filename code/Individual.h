@@ -7,13 +7,13 @@
 
 class Individual{
       private:
-              //double productivity;
       public:
              Individual();
              ~Individual();
              Individual(gType p1, gType p2, bool crossoverFlag);
              int lifespan;
              int age;
+             bool isRetired();
              double getproductivity(gType);
              double getproductivity();
              int getlifespan();

@@ -55,22 +55,35 @@ void BusinessCycle::cycle()
                 firmindex.at(i)->employeeProductUpdate();
                 //get a list of employees with which to work
                 std::vector<Individual*> empls = firmindex.at(i)->getemployees();
+                std::vector<Individual*> mentors;
                 // get the number of people who will be mentoring
                 int numMentors = (int)(empls.size()*(double)config->get_modicum_of_acceptance()/100.0); 
                 //std::cout << firmindex.at(i)->getemployees().size()<<"\n";
                 firmindex.at(i)->sortEmployees();
-                for(int j = 1; j < numMentors-1;j++){
+                //std::cout <<numMentors << "\n";
+                for(int j = 0; j < numMentors;j++){
                         //a certain percentage of individuals within the firm whose skill sets match the product type most closely must mentor new individuals who start at an initial age
-                        //They may do this via random skill (bit) selection or via crossover       
-                        Individual x = Individual::Individual(empls.at(j)->skillSet, empls.at(j-1)->skillSet, true);
+                        //They may do this via random skill (bit) selection or via crossover
+                        if(!empls.at(j)->isRetired()){
+                             mentors.push_back(empls.at(j));
+                        }
+                }
+                for(int j = 1; j < mentors.size();j++){  
+                        Individual x = Individual::Individual(mentors.at(j)->skillSet, mentors.at(j-1)->skillSet, false);
+                        firmindex.at(i)->employees.push_back(&x);
+                        x = Individual::Individual(mentors.at(j)->skillSet, mentors.at(j-1)->skillSet, true);
+                        firmindex.at(i)->employees.push_back(&x);                        
+                        x = Individual::Individual(mentors.at(j)->skillSet, mentors.at(j-1)->skillSet, false);
+                        x.skillSet = mutate(x.skillSet);
+                        firmindex.at(i)->employees.push_back(&x);                        
+                        x = Individual::Individual(mentors.at(j)->skillSet, mentors.at(j-1)->skillSet, true);
+                        x.skillSet = mutate(x.skillSet);
                         firmindex.at(i)->employees.push_back(&x);
                 }
+                
                 for(int j = 0; j < firmindex.at(i)->employees.size();j++){
                         firmindex.at(i)->employees.at(j)->age++;
-                        if(firmindex.at(i)->employees.at(j)->age >= firmindex.at(i)->employees.at(j)->lifespan){
-                             firmindex.at(i)->employees.at(j)->~Individual();
-                             firmindex.at(i)->employees.erase(j);
-                             std::cout << "DEAD!";
+                        if(firmindex.at(i)->employees.at(j)->isRetired()){
                         }                
                 }
          

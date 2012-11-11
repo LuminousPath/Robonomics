@@ -8,8 +8,8 @@ Individual::Individual(){
 	p2.set();
 	//get random bits from each parent to create the child
 	skillSet = getRandomChild(p1,p2);
-	age = getRandomInt(16, 65);
-	lifespan = getRandomInt(age, 65);
+	age = 16;
+	lifespan = 65;
 }
 
 Individual::~Individual(){
@@ -19,6 +19,8 @@ Individual::~Individual(){
 Individual::Individual(gType p1, gType p2,bool crossoverFlag){
 	if(crossoverFlag) skillSet = crossOver(p1,p2);
 	else skillSet = getRandomChild(p1,p2);
+	age = 16;
+	lifespan = 65;
 }
 
 double Individual::getproductivity(gType ProductID)
@@ -28,7 +30,6 @@ double Individual::getproductivity(gType ProductID)
 }
 
 double Individual::getproductivity(){
-       std::cout << prod;
        getproductivity(prod);
 }
 
@@ -44,4 +45,8 @@ int Individual::getlifespan()
 
 void Individual::setProd(gType p){
      prod=p;
+}
+
+bool Individual::isRetired(){
+     return age >= lifespan;
 }
