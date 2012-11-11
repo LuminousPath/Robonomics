@@ -29,7 +29,7 @@ void BusinessCycle::setConfigurator(Configurator* c)
      config = c;     
 }
 
-void BusinessCycle::Cycle()
+void BusinessCycle::cycle()
 {
      /*
         firms trade
@@ -50,17 +50,16 @@ void BusinessCycle::Cycle()
         */
                         
         //individuals mentor
-        for(int i = 0; i < firmindex.size();i++){
+        /*for(int i = 0; i < firmindex.size();i++){
+                tempFirm = firmindex.at(i);
                 Individual p1;
                 Individual p2;
                 std::vector<Individual*> empls = firmindex.at(i)->getemployees();
-                empls.size()*(double)config->get_modicum_of_acceptance()/100.0;
-                for(int j = 0; j < empls.size(); j++){
+                double numBreeders = empls.size()*(double)config->get_modicum_of_acceptance()/100.0;
+                //firmindex.at(i)->sortEmployees();
                         //a certain percentage of individuals within the firm whose skill sets match the product type most closely must mentor new individuals who start at an initial age
-                        //They may do this via random skill (bit) selection or via crossover
-                }
-                
-        }
+                        //They may do this via random skill (bit) selection or via crossover                
+        }*/
             
      /*
         firms manage
@@ -72,6 +71,7 @@ void BusinessCycle::Cycle()
      */
 
 }
+
 
 
 

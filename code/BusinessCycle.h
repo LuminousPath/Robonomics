@@ -6,6 +6,7 @@
 #include "Configurator.h"
 #include <vector>
 #include <iostream>
+#include <algorithm>
 
 class BusinessCycle{
       private:
@@ -15,10 +16,12 @@ class BusinessCycle{
             std::vector<Individual*> unemployed;
             Configurator* config;
       public:
+            Firm* tempFirm;
             BusinessCycle(std::vector<Firm*>, std::vector<Individual*>, std::vector<Individual*>);
             Snapshot firstcycle();
             Snapshot cycleout();
+            bool productivitySorter(Individual* e1,Individual* e2);   
             void setConfigurator(Configurator*);
             void cyclein(Snapshot);
-            void Cycle();
+            void cycle();
 };

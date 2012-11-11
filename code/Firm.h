@@ -21,6 +21,6 @@ class Firm{
              double getcapital();
              double getproductivity();
              gType getcompanyProduct();
-             std::vector<Individual*> getemployees();         
+             std::vector<Individual*> getemployees();
       };
 

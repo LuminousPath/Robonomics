@@ -97,7 +97,7 @@ void Simulation::run(){
     // while we have not run all the cycles
     while(counter < numcycles)
     {
-           cycler->Cycle();
+           cycler->cycle();
            std::cout << std::endl << "Cycle: " << counter + 1 << std::endl;
            // cycle out
            cyclesnap = cycler->cycleout();
