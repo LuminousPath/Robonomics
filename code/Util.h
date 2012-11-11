@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Types.h"
+#include "Individual.h"
 #include <time.h>
 #include <vector>
 #include <cmath>

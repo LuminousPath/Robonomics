@@ -19,8 +19,7 @@ class BusinessCycle{
             Firm* tempFirm;
             BusinessCycle(std::vector<Firm*>, std::vector<Individual*>, std::vector<Individual*>);
             Snapshot firstcycle();
-            Snapshot cycleout();
-            bool productivitySorter(Individual* e1,Individual* e2);   
+            Snapshot cycleout();  
             void setConfigurator(Configurator*);
             void cyclein(Snapshot);
             void cycle();

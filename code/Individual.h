@@ -8,13 +8,17 @@
 class Individual{
       private:
               //double productivity;
-              int lifespan;
-              int age;
-			  gType skillSet;
       public:
              Individual();
+             ~Individual();
              Individual(gType p1, gType p2, bool crossoverFlag);
+             int lifespan;
+             int age;
              double getproductivity(gType);
+             double getproductivity();
              int getlifespan();
              int getage();
+             void setProd(gType);
+             gType prod;
+             gType skillSet;
       };

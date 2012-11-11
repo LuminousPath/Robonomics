@@ -12,6 +12,10 @@ Individual::Individual(){
 	lifespan = getRandomInt(age, 65);
 }
 
+Individual::~Individual(){
+
+}
+
 Individual::Individual(gType p1, gType p2,bool crossoverFlag){
 	if(crossoverFlag) skillSet = crossOver(p1,p2);
 	else skillSet = getRandomChild(p1,p2);
@@ -21,6 +25,11 @@ double Individual::getproductivity(gType ProductID)
 {
        if(ProductID != NULL) return 1 - ((double)getHammingDistance(ProductID, skillSet) / (double)ProductID.size()); 
        else return 0;
+}
+
+double Individual::getproductivity(){
+       std::cout << prod;
+       getproductivity(prod);
 }
 
 int Individual::getage()
@@ -33,4 +42,6 @@ int Individual::getlifespan()
     return lifespan;
 }
 
-
+void Individual::setProd(gType p){
+     prod=p;
+}

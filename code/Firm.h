@@ -7,20 +7,22 @@
 #include <iostream>
 #include <bitset>
 #include <vector>
-#include <bitset>
+#include <algorithm>
 
 class Firm{
       private:
-              gType companyProduct;
-              double capital;
-              std::vector<Individual*> employees;
               
       public:
              Firm(int, int);
-             Firm(int, std::vector<Individual*>); 
+             Firm(int, std::vector<Individual*>);
+             double capital; 
+             gType companyProduct;
+             std::vector<Individual*> employees;
              double getcapital();
              double getproductivity();
              gType getcompanyProduct();
              std::vector<Individual*> getemployees();
+             void employeeProductUpdate();
+             void sortEmployees();             
       };
 

@@ -21,7 +21,7 @@ bool Simulation::setup(Configurator* configuration){
      //initialize random number function
      srand(time(NULL));
      // number of firms
-     int firmcounter = 0;
+     int firmcounter = 0;       
 
      // pointer to an individual
      Individual* indiepointer;

@@ -7,7 +7,8 @@ int getHammingDistance(gType v1, gType v2)
 
 //randomly pick a parent to fulfill genetic requirements at each increment in the genome
 gType getRandomChild(gType p1, gType p2){
-	gType child = 0;
+	gType child;
+	child.set();
 	std::vector<gType> genePool;
 	genePool.push_back(p1);
 	genePool.push_back(p2);
@@ -53,9 +54,8 @@ gType mutate(gType c1){
 
 //get a random positive integer between l and h (non-inclusive)
 int getRandomInt(int l, int h){
-
-	h = std::abs((double)h);
-	l = std::abs((double)l);
+	h = (int)std::abs((double)h);
+	l = (int)std::abs((double)l);
 	//size check
 	if(l > h){
 		int t = l;
@@ -74,3 +74,5 @@ double getDelta(double x1, double x2){
 bool aboveThresh(double x1, double x2, double thresh){
 	return (getDelta(x1,x2)>=thresh);
 }
+
+
