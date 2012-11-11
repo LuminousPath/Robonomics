@@ -1,10 +1,4 @@
 #include "Firm.h"
-#include "Util.h"
-#include "Individual.h"
-#include <iostream>
-#include <bitset>
-#include <limits.h>
-#include <vector>
 
 Firm::Firm(int avg_starting_capital, int starting_individuals)
 {
@@ -43,7 +37,6 @@ double Firm::getproductivity()
        {
             temp = *it;
             productivity += temp->getproductivity(companyProduct);
-            //std::cout << (double)ULLONG_MAX << std::endl << temp->getproductivity(companyProduct) << std::endl;
        }
        return productivity / employees.size();
 

@@ -1,8 +1,10 @@
-#include <vector>
+#pragma once
 #include "Individual.h"
 #include "Firm.h"
-
-#pragma once
+#include <iostream>
+#include <stdlib.h>
+#include <vector>
+#include <cstring>
 
 class Snapshot{
     private:

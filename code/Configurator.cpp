@@ -1,8 +1,5 @@
 #include "Configurator.h"
-#include <cstdlib>
-#include <iostream>
-#include <fstream>
-#include <string>
+
 
 Configurator::Configurator(char* filename){
       initialized = false;

@@ -4,8 +4,13 @@
 #include <time.h>
 #include <vector>
 #include <cmath>
-
-
+#include <stdlib.h>
+#include <stdio.h>
+#include <string>
+#include <bitset>
+#include <iostream>
+#include <exception>
+#include <time.h>
 
 int getHammingDistance(gType v1, gType v2);
 

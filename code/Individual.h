@@ -2,7 +2,8 @@
 
 #include "Types.h"
 #include "Util.h"
-
+#include <iostream>
+#include <limits.h>
 
 class Individual{
       private:

@@ -1,12 +1,13 @@
 #pragma once
 
-#include <bitset>
-#include "Types.h"
+#include "Util.h"
 #include "Individual.h"
+#include "Types.h"
+#include <limits.h>
+#include <iostream>
+#include <bitset>
 #include <vector>
-
-
-
+#include <bitset>
 
 class Firm{
       private:

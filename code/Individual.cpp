@@ -1,6 +1,4 @@
 #include "Individual.h"
-#include <iostream>
-#include <limits.h>
 
 Individual::Individual(){
 	//bitset of all 0s
@@ -11,7 +9,7 @@ Individual::Individual(){
 	//get random bits from each parent to create the child
 	skillSet = getRandomChild(p1,p2);
 	age = getRandomInt(16, 65);
-	lifespan = getRandomInt(age, 99);
+	lifespan = getRandomInt(age, 65);
 }
 
 Individual::Individual(gType p1, gType p2,bool crossoverFlag){

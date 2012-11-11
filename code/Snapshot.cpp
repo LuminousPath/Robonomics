@@ -1,8 +1,4 @@
 #include "Snapshot.h"
-#include <iostream>
-#include <stdlib.h>
-#include <vector>
-#include <cstring>
 //#include <libxml/encoding.h>
 //#include <libxml/xmlwriter.h>
 
@@ -24,7 +20,6 @@ void Snapshot::print_toscreen()
 
      for(; it < Firmlist.end(); it++)
      {
-
            firmpointer = *it;
            std::cout << std::endl << "Firm: " << counter + 1 << std::endl << "Productivity: " << firmpointer->getproductivity() << std::endl << "capital: " << firmpointer->getcapital() << std::endl;
            for(it3 = 0; it3 < firmpointer->getemployees().size(); it3++)
