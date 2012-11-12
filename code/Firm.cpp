@@ -23,6 +23,9 @@ int Firm::GenerateID()
     static int s_nID = 0;
     return s_nID++;
 }
+Firm::~Firm(){
+    delete(buysFrom);
+}
 
 Firm::Firm(int initialcapital, std::vector<Individual*> startingemployees)
 {

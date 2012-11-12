@@ -38,7 +38,6 @@ void BusinessCycle::cycle()
         */
                         
         for(int i = 0; i < firmindex.size();i++){
-                
                 //this firm
                 Firm* firm = firmindex.at(i);
                 double productivity = firm->getproductivity();
@@ -51,9 +50,10 @@ void BusinessCycle::cycle()
                 int hfr = (int)((double)empls.size() * hft);
                 if(hfr = 0) hfr = 2;
                 //best product for this firm
-                Firm* hasBestProduct;
-                if(i ==0) hasBestProduct = firmindex.at(1);
-                else hasBestProduct = firmindex.at(0);
+                Firm* hasBestProduct = firmindex.at(0);
+                while(hasBestProduct->id == firm->id)
+                    hasBestProduct = firmindex.at(getRandomInt(0,firmindex.size()));
+                
                 //how close the product is to what is required
                 double bestDist = 1.0;
                 //find the best product for this firm
@@ -82,7 +82,7 @@ void BusinessCycle::cycle()
                           }
                           else c++;
                       }   
-                     Firm* newFirm = new Firm(0,config->get_start_individuals());
+                     Firm* newFirm = new Firm::Firm(0,config->get_start_individuals());
                      newFirm->unitsLeft = 100;
                      newFirm->companyProduct = prod;
                      newFirm->capital = starting;
@@ -105,7 +105,7 @@ void BusinessCycle::cycle()
                 double after = firm->capital;
                 //std::cout << "Raw units acquired: " << raw << " from Firm: "<< hasBestProduct->id <<"\n";
                 //how much product is produced?: (int)(productivity)(qty of raw purchased)*(#employees)
-                firm->unitsLeft += (int)((double)productivity*(double)raw);
+                firm->unitsLeft += (int)(((double)productivity+.5)*(double)raw);
                 //std::cout << "Firm " << firm->id << " created " << (int)((double)productivity*(double)raw) << " units.\n";
                 //std::cout << "Firm " << firm->id << " has " << firm->unitsLeft << " units that will sell for " << firm->productCost <<" each.\n";
                 //std::cout << "Our cost was: " << getDelta(before,after) << ". \n";
@@ -172,7 +172,7 @@ void BusinessCycle::cycle()
                       else c++;
                 }
                 //if they are retired, turn them into soylent green.  
-                for(int c = 0;c < empls.size();){  
+                for(int c = 0;c < empls.size();){
                       if(empls.at(c)->isRetired()){
                           for(int y = 0; y < all_the_peoples.size();y++){
                                   if(empls.at(c) == all_the_peoples.at(y)){
@@ -186,6 +186,7 @@ void BusinessCycle::cycle()
                 }
                 
                 if(empls.size() ==0 || firm->timeUntraded > config->get_inactivity_rate()){
+                    
                     // lay everyone off if there is anyone there
                     while(!empls.empty()){
                           Individual* temp = empls.back();
@@ -194,10 +195,9 @@ void BusinessCycle::cycle()
                     }
                     // remove the firm forever.
                     firmindex.erase(firmindex.begin()+i);
+                    i--;
                 } 
         }
-
-
         //get all employees
         for(int j = 0; j < all_the_peoples.size();j++){
                 //iterate their ages
@@ -216,19 +216,12 @@ void BusinessCycle::cycle()
                                   if(unemployed.at(c) == all_the_peoples.at(y)){
                                        all_the_peoples.erase(all_the_peoples.begin()+y);
                                        break;
-                                       
-                                       
                                   }
                           }
                   unemployed.erase(unemployed.begin()+c);
               }
               else c++;
         }
-            
-     /*
-        print simulation state to file
-            print everything to file in GraphML format
-     */
 
 }
 

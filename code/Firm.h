@@ -18,6 +18,7 @@ class Firm{
              Firm(int, int);
              Firm(int, std::vector<Individual*>);
              Firm* buysFrom;
+             ~Firm();
              double capital; 
              unsigned long long unitsLeft;
              gType companyProduct;
