@@ -8,8 +8,8 @@ Individual::Individual(){
 	p2.set();
 	//get random bits from each parent to create the child
 	skillSet = getRandomChild(p1,p2);
-	age = 16;
-	lifespan = 65;
+	age = getRandomInt(16, 65);
+	lifespan = getRandomInt(age, 65);
 }
 
 Individual::~Individual(){

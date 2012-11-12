@@ -9,22 +9,21 @@ Firm::Firm(int avg_starting_capital, int starting_individuals)
      p2.set();
      //get random bits from each parent to create the child
      companyProduct = getRandomChild(p1,p2);
-     std::cout << companyProduct;
+     rawProduct = getRandomChild(p1,p2);
      capital = getRandomInt(1, 2 * avg_starting_capital);
-     for(int counter = 0; counter < starting_individuals; counter++)
-     {
-             //don't uncomment this, thar be dragons here
-             //employees.push_back();
-     }
 }
 
 Firm::Firm(int initialcapital, std::vector<Individual*> startingemployees)
 {
-    gType p2 = 0;
-    p2.set();
-    capital = initialcapital;
-    employees = startingemployees;
-    companyProduct = p2;
+     //bitset of all 0s
+     gType p1 = 0;
+     //bitset of all 1s: (2^64)-1
+     gType p2;
+     p2.set();
+     capital = initialcapital;
+     employees = startingemployees;
+     companyProduct = getRandomChild(p1,p2);
+     rawProduct = getRandomChild(p1,p2);
 }
 
 double Firm::getcapital()

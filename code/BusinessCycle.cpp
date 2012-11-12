@@ -50,50 +50,70 @@ void BusinessCycle::cycle()
         */
                         
         for(int i = 0; i < firmindex.size();i++){
+                Firm* firm = firmindex.at(i);
                 //individuals mentor
                 //declare the product for each employee so we can sort based on productivity
-                firmindex.at(i)->employeeProductUpdate();
+                firm->employeeProductUpdate();
                 //get a list of employees with which to work
-                std::vector<Individual*> empls = firmindex.at(i)->getemployees();
+                std::vector<Individual*> empls = firm->getemployees();
                 std::vector<Individual*> mentors;
                 // get the number of people who will be mentoring
                 int numMentors = (int)(empls.size()*(double)config->get_modicum_of_acceptance()/100.0); 
                 //std::cout << firmindex.at(i)->getemployees().size()<<"\n";
-                firmindex.at(i)->sortEmployees();
-                //std::cout <<numMentors << "\n";
+                firm->sortEmployees();
                 for(int j = 0; j < numMentors;j++){
-                        //a certain percentage of individuals within the firm whose skill sets match the product type most closely must mentor new individuals who start at an initial age
-                        //They may do this via random skill (bit) selection or via crossover
+                        //a certain percentage of individuals within the firm whose skill sets match the product type most closely 
+                        //must mentor new individuals who start at an initial age
+                        
                         if(!empls.at(j)->isRetired()){
                              mentors.push_back(empls.at(j));
                         }
                 }
-                for(int j = 1; j < mentors.size();j++){  
-                        Individual x = Individual::Individual(mentors.at(j)->skillSet, mentors.at(j-1)->skillSet, false);
-                        firmindex.at(i)->employees.push_back(&x);
-                        x = Individual::Individual(mentors.at(j)->skillSet, mentors.at(j-1)->skillSet, true);
-                        firmindex.at(i)->employees.push_back(&x);                        
-                        x = Individual::Individual(mentors.at(j)->skillSet, mentors.at(j-1)->skillSet, false);
-                        x.skillSet = mutate(x.skillSet);
-                        firmindex.at(i)->employees.push_back(&x);                        
-                        x = Individual::Individual(mentors.at(j)->skillSet, mentors.at(j-1)->skillSet, true);
-                        x.skillSet = mutate(x.skillSet);
-                        firmindex.at(i)->employees.push_back(&x);
+                for(int j = 1; j < mentors.size();j++){
+                        Individual* x;  
+                        //They may do this via random skill (bit) selection or via crossover
+                        if(getRandomInt(0,2)) x = new Individual::Individual(mentors.at(j)->skillSet, mentors.at(j-1)->skillSet, false);
+                        else{
+                              x = new Individual::Individual(mentors.at(j)->skillSet, mentors.at(j-1)->skillSet, true);
+                            }
+                        empls.at(empls.size()-1)->skillSet = mutate(empls.at(empls.size()-1)->skillSet);
+                        firm->employees.push_back(x);                  
+                }                
+                //get all employees
+                for(int j = 0; j < empls.size();j++){
+                        //iterate their ages
+                        empls.at(j)->age++;          
                 }
-                
-                for(int j = 0; j < firmindex.at(i)->employees.size();j++){
-                        firmindex.at(i)->employees.at(j)->age++;
-                        if(firmindex.at(i)->employees.at(j)->isRetired()){
-                        }                
+                Individual* tempEmp;
+                //if they are retired, turn them into soylent green.  
+                for(int c = 0;c < firm->employees.size();){  
+                      if(firm->employees.at(c)->isRetired()){
+                          firm->employees.erase(firm->employees.begin()+c);
+                      }
+                      else c++;
                 }
-         
+                //firms may fire individuals
+                double hft = (double)config->get_hire_fire_threshold()/100.0;
+                for(int c = 0;c < firm->employees.size();){
+                      if((double)(firm->employees.at(c)->getproductivity(firm->companyProduct)) <= hft){
+                          tempEmp = firm->employees.at(c);
+                          firm->employees.erase(firm->employees.begin()+c);
+                          unemployed.push_back(tempEmp);
+                      }                          
+                      else c++;
+                }
+                //firms may hire individuals
+                for(int c = 0; c < unemployed.size();){
+                      if((double)unemployed.at(c)->getproductivity(firm->companyProduct) > hft){
+                          tempEmp = unemployed.at(c);
+                          firm->employees.push_back(tempEmp);
+                          unemployed.erase(unemployed.begin() + c);
+                      }
+                      else c++;
+                }     
         }
             
      /*
-        firms manage
-            firms may hire individuals
-            firms may fire individuals
-            individuals above retirement age must disappear from the economy
         print simulation state to file
             print everything to file in GraphML format
      */

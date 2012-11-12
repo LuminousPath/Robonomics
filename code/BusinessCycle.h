@@ -1,9 +1,11 @@
 #pragma once
 
+#include "Simulation.h"
 #include "Snapshot.h"
 #include "Firm.h"
 #include "Individual.h"
 #include "Configurator.h"
+
 #include <vector>
 #include <iostream>
 #include <algorithm>
@@ -16,7 +18,6 @@ class BusinessCycle{
             std::vector<Individual*> unemployed;
             Configurator* config;
       public:
-            Firm* tempFirm;
             BusinessCycle(std::vector<Firm*>, std::vector<Individual*>, std::vector<Individual*>);
             Snapshot firstcycle();
             Snapshot cycleout();  
