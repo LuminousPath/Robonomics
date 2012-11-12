@@ -41,6 +41,8 @@ void BusinessCycle::cycle()
                 
                 //this firm
                 Firm* firm = firmindex.at(i);
+                double productivity = firm->getproductivity();
+                firm->timeUntraded++;
                 //get a list of employees with which to work
                 std::vector<Individual*> empls = firm->getemployees();
                 //hire fire threshold
@@ -49,7 +51,9 @@ void BusinessCycle::cycle()
                 int hfr = (int)((double)empls.size() * hft);
                 if(hfr = 0) hfr = 2;
                 //best product for this firm
-                Firm* hasBestProduct = firmindex.at(0);
+                Firm* hasBestProduct;
+                if(i ==0) hasBestProduct = firmindex.at(1);
+                else hasBestProduct = firmindex.at(0);
                 //how close the product is to what is required
                 double bestDist = 1.0;
                 //find the best product for this firm
@@ -85,10 +89,10 @@ void BusinessCycle::cycle()
                      firmindex.push_back(newFirm); 
                 }                
                 //how much does the product cost?: (quality of raw)
-                firm->productCost = 1.0-bestDist;
+                firm->productCost = 1.0;//-bestDist;
                 //while there is product left and the firm has enough money to purchase it
                 int raw = 0;
-                std::cout << "Raw goods available: " << hasBestProduct->unitsLeft << "\n";
+                //std::cout << "\n---Firm "<<firm->id << "---\n" <<"\nRaw units available: " << hasBestProduct->unitsLeft << "\n";
                 double before = firm->capital;
                 while(hasBestProduct->unitsLeft > 0 && firm->capital >= hasBestProduct->productCost){
                     //make it so
@@ -97,13 +101,15 @@ void BusinessCycle::cycle()
                     firm->capital -= hasBestProduct->productCost;  
                     raw++;                 
                 }
+                firm->buysFrom = hasBestProduct;
                 double after = firm->capital;
-                std::cout << "Raw Goods Acquired: " << raw << "\n";
+                //std::cout << "Raw units acquired: " << raw << " from Firm: "<< hasBestProduct->id <<"\n";
                 //how much product is produced?: (int)(productivity)(qty of raw purchased)*(#employees)
-                firm->unitsLeft += (double)((double)firm->getproductivity()*(double)raw);
-                std::cout << "We created: " << firm->unitsLeft << " items that will sell for " << firm->productCost <<" each.\n";
-                std::cout << "Our cost was: " << getDelta(before,after) << ". \n";
-                              
+                firm->unitsLeft += (int)((double)productivity*(double)raw);
+                //std::cout << "Firm " << firm->id << " created " << (int)((double)productivity*(double)raw) << " units.\n";
+                //std::cout << "Firm " << firm->id << " has " << firm->unitsLeft << " units that will sell for " << firm->productCost <<" each.\n";
+                //std::cout << "Our cost was: " << getDelta(before,after) << ". \n";
+                hasBestProduct->timeUntraded = 0;              
                     //money += qtypurchased*(quality of raw)
                 
                 //individuals mentor
@@ -134,43 +140,89 @@ void BusinessCycle::cycle()
                         //"retrain" the least effective employee
                         empls.at(empls.size()-1)->skillSet = mutate(empls.at(empls.size()-1)->skillSet);
                         firm->employees.push_back(x);                  
-                }                
-                //get all employees
-                for(int j = 0; j < empls.size();j++){
-                        //iterate their ages
-                        empls.at(j)->age++;          
-                }
+                        all_the_peoples.push_back(x);
+                }               
+
+                
                 Individual* tempEmp;
-                //if they are retired, turn them into soylent green.  
-                for(int c = 0;c < firm->employees.size();){  
-                      if(firm->employees.at(c)->isRetired()){
-                          firm->employees.erase(firm->employees.begin()+c);
-                      }
-                      else c++;
-                }
+                int numFired = 0;
                 //firms may fire individuals
                 
-                for(int c = 0, q = hfr; q > 0;q--){
-                      if((double)(firm->employees.at(c)->getproductivity(firm->companyProduct)) <= 1.0-hft){
-                          tempEmp = firm->employees.at(c);
-                          firm->employees.erase(firm->employees.begin()+c);
+                for(int c = 0; c < empls.size();){
+                      double empProductivity = empls.at(c)->getproductivity(firm->companyProduct);
+                      if(getDelta(empProductivity,productivity) > hft){
+                          tempEmp = empls.at(c);
+                          empls.erase(empls.begin()+c);
                           unemployed.push_back(tempEmp);
+                          numFired++;
                       }                          
                       else c++;
                 }
-                
-                //firms may hire individuals                
-                for(int c = 0, q = hfr; c < unemployed.size() && q > 0;q--){
-                      if((double)unemployed.at(c)->getproductivity(firm->companyProduct) > 1.0-hft){
+                // firms may hire individuals
+                   
+                numFired = getRandomInt(0, numFired+1);
+                for(int c = 0; c < unemployed.size() && numFired >0;){
+                      double empProductivity = empls.at(c)->getproductivity(firm->companyProduct);
+                      if(getDelta(empProductivity,productivity) <= hft){
                           tempEmp = unemployed.at(c);
-                          firm->employees.push_back(tempEmp);
-                          unemployed.erase(unemployed.begin() + c);
+                          unemployed.erase(unemployed.begin()+c);
+                          empls.push_back(tempEmp);
+                          numFired--;
+                      }                          
+                      else c++;
+                }
+                //if they are retired, turn them into soylent green.  
+                for(int c = 0;c < empls.size();){  
+                      if(empls.at(c)->isRetired()){
+                          for(int y = 0; y < all_the_peoples.size();y++){
+                                  if(empls.at(c) == all_the_peoples.at(y)){
+                                       all_the_peoples.erase(all_the_peoples.begin()+y);
+                                       break;
+                                  }
+                          }
+                          empls.erase(empls.begin()+c);
                       }
                       else c++;
-                }   
-                if(empls.size() ==0){
+                }
+                
+                if(empls.size() ==0 || firm->timeUntraded > config->get_inactivity_rate()){
+                    // lay everyone off if there is anyone there
+                    while(!empls.empty()){
+                          Individual* temp = empls.back();
+                          empls.pop_back();                          
+                          unemployed.push_back(temp);               
+                    }
+                    // remove the firm forever.
                     firmindex.erase(firmindex.begin()+i);
                 } 
+        }
+
+
+        //get all employees
+        for(int j = 0; j < all_the_peoples.size();j++){
+                //iterate their ages
+                all_the_peoples.at(j)->age++;          
+        }
+        
+        for(int j = 0; j < unemployed.size();j++){
+                //iterate their ages
+                unemployed.at(j)->timeUnemployed++;          
+        }
+        
+        //if they have given up, turn them into soylent green.  
+        for(int c = 0;c < unemployed.size();){  
+              if(unemployed.at(c)->timeUnemployed > config->get_inactivity_rate()){
+                          for(int y = 0; y < all_the_peoples.size();y++){
+                                  if(unemployed.at(c) == all_the_peoples.at(y)){
+                                       all_the_peoples.erase(all_the_peoples.begin()+y);
+                                       break;
+                                       
+                                       
+                                  }
+                          }
+                  unemployed.erase(unemployed.begin()+c);
+              }
+              else c++;
         }
             
      /*

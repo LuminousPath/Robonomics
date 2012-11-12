@@ -9,6 +9,7 @@ Configurator::Configurator(char* filename){
       hire_fire_threshold = 0;
       modicum_of_acceptance = 0;
       cycles = 0;
+      inactivity_rate = 0;
 
       std::ifstream infile;
       std::string line;
@@ -48,6 +49,12 @@ Configurator::Configurator(char* filename){
                        getline(infile, line, '\n');
                        cycles = atoi(line.c_str());
                }
+               
+               if(line == "inactivity_rate")
+               {
+                       getline(infile, line, '\n');
+                       inactivity_rate = atoi(line.c_str());
+               }
           }
           initialized = true;
       }
@@ -76,6 +83,11 @@ int Configurator::get_hire_fire_threshold()
 int Configurator::get_modicum_of_acceptance()
 {
     return modicum_of_acceptance;
+}
+
+int Configurator::get_inactivity_rate()
+{
+    return inactivity_rate;
 }
 
 int  Configurator::get_cycles()

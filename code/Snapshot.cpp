@@ -10,6 +10,7 @@ Snapshot::Snapshot(std::vector<Individual*> unemployedin, std::vector<Firm*> Fir
 
 void Snapshot::print_toscreen()
 {
+     int population = 0;
      int counter = 0;
      int counter2 = 0;
      std::vector<Firm*>::iterator it = Firmlist.begin();
@@ -20,9 +21,10 @@ void Snapshot::print_toscreen()
 
      for(; it < Firmlist.end(); it++)
      {
+           
            firmpointer = *it;
-           if(firmpointer->capital >= 1)
-           std::cout << std::endl << "Firm: " << counter + 1 << std::endl /*<<"Product: "<<firmpointer->companyProduct<<std::endl*/ << "Productivity: " << firmpointer->getproductivity() << std::endl << "Employee Count: " << firmpointer->employees.size() << std::endl << "capital: " << firmpointer->getcapital() << std::endl<< "units left: " << firmpointer->unitsLeft << std::endl;
+           population += firmpointer->employees.size();
+           std::cout << std::endl << "Firm: " << firmpointer->id << std::endl /*<<"Product: "<<firmpointer->companyProduct<<std::endl*/ << "Productivity: " << firmpointer->getproductivity() << std::endl << "Employee Count: " << firmpointer->employees.size() << std::endl << "Capital: " << firmpointer->getcapital() << std::endl<< "Units left: " << firmpointer->unitsLeft << std::endl << "Buys from: " << firmpointer->buysFrom->id<< std::endl;
            /*for(it3 = 0; it3 < firmpointer->getemployees().size(); it3++)
            {
                    personpointer = firmpointer->getemployees().at(it3);
@@ -31,15 +33,15 @@ void Snapshot::print_toscreen()
            }*/
            counter++;
      }
-     /*
-     std::cout << std::endl << "Unemployed:" << std::endl;
-     for(; it2 < unemployed.end(); it2++)
+     std::cout << std::endl<<"Population: " <<population << " Unemployed:" << unemployed.size()  << " Unemployment Rate:"<< (double)unemployed.size()/((double)population + (double) unemployed.size())<< std::endl;
+     //std::cin.get();
+     /*for(; it2 < unemployed.end(); it2++)
      {
            personpointer = *it2;
            std::cout << "Person: " << counter2 + 1 << std::endl << "Productivity: " << personpointer->getproductivity(NULL) << std::endl << "Age: " << personpointer->getage() << std::endl << "lifespan: " << personpointer->getlifespan() << std::endl;
            counter2++;
-     }
-     */
+     }*/
+     
 }
 
 

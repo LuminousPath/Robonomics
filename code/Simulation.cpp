@@ -22,7 +22,7 @@ bool Simulation::setup(Configurator* configuration){
      srand(time(NULL));
      // number of firms
      int firmcounter = 0;       
-
+     
      // pointer to an individual
      Individual* indiepointer;
      // iterator over a vector of individual pointers

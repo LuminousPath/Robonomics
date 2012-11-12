@@ -10,6 +10,7 @@ Individual::Individual(){
 	skillSet = getRandomChild(p1,p2);
 	age = getRandomInt(16, 65);
 	lifespan = getRandomInt(age, 65);
+	timeUnemployed = 0;
 }
 
 Individual::~Individual(){
@@ -20,7 +21,8 @@ Individual::Individual(gType p1, gType p2,bool crossoverFlag){
 	if(crossoverFlag) skillSet = crossOver(p1,p2);
 	else skillSet = getRandomChild(p1,p2);
 	age = 16;
-	lifespan = 65;
+	lifespan = getRandomInt(16, 65);
+	timeUnemployed = 0;
 }
 
 double Individual::getproductivity(gType ProductID)

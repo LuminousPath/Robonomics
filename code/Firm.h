@@ -10,11 +10,14 @@
 #include <algorithm>
 
 class Firm{
-      private:
-              
+      private:              
+             int GenerateID();
       public:
+             int id;
+             int timeUntraded;
              Firm(int, int);
              Firm(int, std::vector<Individual*>);
+             Firm* buysFrom;
              double capital; 
              unsigned long long unitsLeft;
              gType companyProduct;
