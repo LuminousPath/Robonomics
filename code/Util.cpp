@@ -68,7 +68,7 @@ int getRandomInt(int l, int h){
 }
 
 double getDelta(double x1, double x2){
-	return fabs((double)(x1-x2));
+	return fabs(x1-x2);
 }
 
 bool aboveThresh(double x1, double x2, double thresh){

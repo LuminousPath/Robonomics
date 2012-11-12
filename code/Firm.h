@@ -16,8 +16,10 @@ class Firm{
              Firm(int, int);
              Firm(int, std::vector<Individual*>);
              double capital; 
+             unsigned long long unitsLeft;
              gType companyProduct;
              gType rawProduct;
+             double productCost;
              std::vector<Individual*> employees;
              double getcapital();
              double getproductivity();

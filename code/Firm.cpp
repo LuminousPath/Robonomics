@@ -11,6 +11,10 @@ Firm::Firm(int avg_starting_capital, int starting_individuals)
      companyProduct = getRandomChild(p1,p2);
      rawProduct = getRandomChild(p1,p2);
      capital = getRandomInt(1, 2 * avg_starting_capital);
+     unitsLeft = 100;
+     for(int i = 0 ; i < starting_individuals; i++){
+             employees.push_back(new Individual::Individual());
+     }
 }
 
 Firm::Firm(int initialcapital, std::vector<Individual*> startingemployees)
@@ -21,6 +25,7 @@ Firm::Firm(int initialcapital, std::vector<Individual*> startingemployees)
      gType p2;
      p2.set();
      capital = initialcapital;
+	 unitsLeft = 100;
      employees = startingemployees;
      companyProduct = getRandomChild(p1,p2);
      rawProduct = getRandomChild(p1,p2);
