@@ -24,3 +24,5 @@ gType mutate(gType c1);
 int getRandomInt(int l, int h);
 
 double getDelta(double, double);
+
+void find_replace(std::string &s, std::string find, std::string replace);
