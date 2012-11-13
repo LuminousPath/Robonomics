@@ -55,3 +55,7 @@ Robonomics/
 *.toc
 *.vrb
 *.xdy
+
+#### raw things #####
+*.csv
+*.xml
