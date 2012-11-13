@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <cstring>
+#include "Graph.h"
 
 class Snapshot{
     private:
@@ -15,7 +16,11 @@ class Snapshot{
     public:
         Snapshot(std::vector<Individual*> unemployed, std::vector<Firm*> Firmlist);
         void print_toscreen();
-        void print_toCSV(int);
-        void print_toXML(const char*);
+        void print_toCSV(int, std::string);
+        void appendToGraph(int);
+        void print_toGraphML(std::string);
+        //void print_toXML(const char*);
 
 };
+
+static Graph outGraph;

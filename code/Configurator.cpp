@@ -10,6 +10,8 @@ Configurator::Configurator(char* filename){
       modicum_of_acceptance = 0;
       cycles = 0;
       inactivity_rate = 0;
+      csv_path = "derp";
+      graphml_path = "derp";
 
       std::ifstream infile;
       std::string line;
@@ -55,6 +57,16 @@ Configurator::Configurator(char* filename){
                        getline(infile, line, '\n');
                        inactivity_rate = atoi(line.c_str());
                }
+               if(line == "csv_path")
+               {
+                       getline(infile, line, '\n');
+                       csv_path = line.c_str();
+               }
+               if(line == "graphml_path")
+               {
+                       getline(infile, line, '\n');
+                       graphml_path = line.c_str();
+               }
           }
           initialized = true;
       }
@@ -93,4 +105,14 @@ int Configurator::get_inactivity_rate()
 int  Configurator::get_cycles()
 {
      return cycles;
+}
+
+std::string  Configurator::get_graphml_path()
+{
+     return graphml_path;
+}
+
+std::string  Configurator::get_csv_path()
+{
+     return csv_path;
 }

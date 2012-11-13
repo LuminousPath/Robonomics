@@ -101,11 +101,23 @@ void Snapshot::print_toXML(const char *uri)
 	xmlFreeTextWriter(writer);
 }
 */
+void Snapshot::appendToGraph(int snapnum){    
+     outGraph.addCycle(snapnum,Firmlist.size());
+     outGraph.addFirms(snapnum,Firmlist);
+     outGraph.addUnemployed(snapnum,unemployed);
+}
 
-void Snapshot::print_toCSV(int snapnum)
+void Snapshot::print_toGraphML(std::string path){
+     std::fstream filer;
+     filer.open(path.c_str(), std::fstream::out);     
+     filer << outGraph.getGraph();
+     filer.close();
+}
+
+void Snapshot::print_toCSV(int snapnum, std::string path)
 {
     std::fstream filer;
-    filer.open("firms.csv", std::fstream::out | std::fstream::app );
+    filer.open(path.c_str(), std::fstream::out | std::fstream::app );
 
     int population = 0;
     int counter = 0;

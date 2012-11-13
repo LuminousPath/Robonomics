@@ -12,6 +12,7 @@
 #include <iostream>
 #include <exception>
 #include <time.h>
+#include <sstream>
 
 int getHammingDistance(gType v1, gType v2);
 
@@ -26,3 +27,6 @@ int getRandomInt(int l, int h);
 double getDelta(double, double);
 
 void find_replace(std::string &s, std::string find, std::string replace);
+
+std::string intToStr(int);
+std::string intToStr(double);

@@ -92,6 +92,7 @@ void Simulation::run(){
     cycler->setConfigurator(config);
     std::cout << "Cycler Created" << std::endl;
     // run the first cycle
+    
     Snapshot cyclesnap = cycler->firstcycle();
     std::cout << "Starting Cycles" << std::endl;
     // while we have not run all the cycles
@@ -106,9 +107,12 @@ void Simulation::run(){
            cycler->cyclein(cyclesnap);
            std::cout << "cyclein ok" << std::endl;
            // output to screen
-           cyclesnap.print_toCSV(counter);
+           cyclesnap.print_toscreen();
+           cyclesnap.print_toCSV(counter,config->get_csv_path());
+           cyclesnap.appendToGraph(counter);
            std::cout << std::endl << "Cycle " << counter + 1 << " completed." << std::endl << std::endl;
            counter++;
     }
+    cyclesnap.print_toGraphML(config->get_graphml_path());
 }
 

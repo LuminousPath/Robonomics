@@ -14,6 +14,8 @@ class Configurator{
               int modicum_of_acceptance;
               int inactivity_rate;
               int cycles;
+              std::string graphml_path;
+              std::string csv_path;
       public:
              bool initialized;
              Configurator(char*);
@@ -24,4 +26,6 @@ class Configurator{
              int get_hire_fire_threshold();
              int get_modicum_of_acceptance();
              int get_cycles();
+             std::string get_graphml_path();
+             std::string get_csv_path();
 };

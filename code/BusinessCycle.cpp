@@ -58,7 +58,7 @@ void BusinessCycle::cycle()
                 double bestDist = 1.0;
                 //find the best product for this firm
                 for(int j = 0; j < firmindex.size();j++){
-                        if(firmindex.at(j)->unitsLeft > 0){
+                        if(firmindex.at(j)->unitsLeft > 0 && firmindex.at(j)->id != firm->id){
                             gType tempProd = firmindex.at(j)->companyProduct;
                             double dist = (double)getHammingDistance(tempProd, firm->rawProduct)/(double)tempProd.size();
                             if(dist < bestDist){

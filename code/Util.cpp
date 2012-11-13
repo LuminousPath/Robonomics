@@ -79,3 +79,15 @@ void find_replace(std::string &s, std::string find, std::string replace)
 {
     s = s.replace(s.find(find), find.length(), replace);
 }
+
+std::string intToStr(int i){
+    std::stringstream ss;
+    ss << i;
+    return ss.str();
+}
+
+std::string intToStr(double i){
+    std::stringstream ss;
+    ss << i;
+    return ss.str();
+}
