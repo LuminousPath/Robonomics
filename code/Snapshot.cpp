@@ -21,7 +21,7 @@ void Snapshot::print_toscreen()
 
      for(; it < Firmlist.end(); it++)
      {
-           
+
            firmpointer = *it;
            population += firmpointer->employees.size();
            std::cout << std::endl << "Firm: " << firmpointer->id << std::endl /*<<"Product: "<<firmpointer->companyProduct<<std::endl*/ << "Productivity: " << firmpointer->getproductivity() << std::endl << "Employee Count: " << firmpointer->employees.size() << std::endl << "Capital: " << firmpointer->getcapital() << std::endl<< "Units left: " << firmpointer->unitsLeft << std::endl << "Buys from: " << firmpointer->buysFrom->id<< std::endl;
@@ -41,7 +41,7 @@ void Snapshot::print_toscreen()
            std::cout << "Person: " << counter2 + 1 << std::endl << "Productivity: " << personpointer->getproductivity(NULL) << std::endl << "Age: " << personpointer->getage() << std::endl << "lifespan: " << personpointer->getlifespan() << std::endl;
            counter2++;
      }*/
-     
+
 }
 
 
@@ -101,3 +101,32 @@ void Snapshot::print_toXML(const char *uri)
 	xmlFreeTextWriter(writer);
 }
 */
+
+void Snapshot::print_toCSV(int snapnum)
+{
+    std::fstream filer;
+    filer.open("firms.csv", std::fstream::out | std::fstream::app );
+
+    int population = 0;
+    int counter = 0;
+
+    std::vector<Firm*>::iterator it = Firmlist.begin();
+     Firm* firmpointer;
+
+    for(; it < Firmlist.end(); it++)
+     {
+
+           firmpointer = *it;
+           population += firmpointer->employees.size();
+           filer << std::endl << snapnum << "," << firmpointer->id << "," /*<<"Product: "<<firmpointer->companyProduct<<std::endl*/ << firmpointer->getproductivity() << "," << firmpointer->employees.size() << "," << firmpointer->getcapital() << "," << firmpointer->unitsLeft << "," << firmpointer->buysFrom->id;
+           /*for(it3 = 0; it3 < firmpointer->getemployees().size(); it3++)
+           {
+                   personpointer = firmpointer->getemployees().at(it3);
+                   std::cout << "Person: " << counter2 + 1 << std::endl << "Productivity: " << personpointer->getproductivity(firmpointer->getcompanyProduct()) << std::endl << "Age: " << personpointer->getage() << std::endl << "lifespan: " << personpointer->getlifespan() << std::endl;
+                   counter2++;
+           }*/
+           counter++;
+     }
+
+    filer.close();
+}

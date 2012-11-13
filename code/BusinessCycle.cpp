@@ -26,17 +26,17 @@ void BusinessCycle::cyclein(Snapshot previous_cycle)
 
 void BusinessCycle::setConfigurator(Configurator* c)
 {
-     config = c;     
+     config = c;
 }
 
 void BusinessCycle::cycle()
 {
      /*
-        firms create 
+        firms create
             If a firm realizes there is no product within a suitable modicum of acceptance, they may invest a certain % of their capital to create a new firm
             The mother firm may take starting individuals from the unemployment pool to seed the child firm’s ranks
         */
-                        
+
         for(int i = 0; i < firmindex.size();i++){
                 //this firm
                 Firm* firm = firmindex.at(i);
@@ -53,7 +53,7 @@ void BusinessCycle::cycle()
                 Firm* hasBestProduct = firmindex.at(0);
                 while(hasBestProduct->id == firm->id)
                     hasBestProduct = firmindex.at(getRandomInt(0,firmindex.size()));
-                
+
                 //how close the product is to what is required
                 double bestDist = 1.0;
                 //find the best product for this firm
@@ -64,8 +64,8 @@ void BusinessCycle::cycle()
                             if(dist < bestDist){
                                     bestDist = dist;
                                     hasBestProduct = firmindex.at(j);
-                            }   
-                        }                    
+                            }
+                        }
                 }
                 double q = (double)(100 - config->get_modicum_of_acceptance())/100.0;
                 if(config->get_avg_starting_capital()/2 < firm->capital && bestDist < q){
@@ -81,13 +81,13 @@ void BusinessCycle::cycle()
                               unemployed.erase(unemployed.begin() + c);
                           }
                           else c++;
-                      }   
-                     Firm* newFirm = new Firm::Firm(0,config->get_start_individuals());
+                      }
+                     Firm* newFirm = new Firm(0, config->get_start_individuals());
                      newFirm->unitsLeft = 100;
                      newFirm->companyProduct = prod;
                      newFirm->capital = starting;
-                     firmindex.push_back(newFirm); 
-                }                
+                     firmindex.push_back(newFirm);
+                }
                 //how much does the product cost?: (quality of raw)
                 firm->productCost = 1.0;//-bestDist;
                 //while there is product left and the firm has enough money to purchase it
@@ -98,8 +98,8 @@ void BusinessCycle::cycle()
                     //make it so
                     hasBestProduct->unitsLeft--;
                     hasBestProduct->capital += hasBestProduct->productCost;
-                    firm->capital -= hasBestProduct->productCost;  
-                    raw++;                 
+                    firm->capital -= hasBestProduct->productCost;
+                    raw++;
                 }
                 firm->buysFrom = hasBestProduct;
                 double after = firm->capital;
@@ -109,45 +109,45 @@ void BusinessCycle::cycle()
                 //std::cout << "Firm " << firm->id << " created " << (int)((double)productivity*(double)raw) << " units.\n";
                 //std::cout << "Firm " << firm->id << " has " << firm->unitsLeft << " units that will sell for " << firm->productCost <<" each.\n";
                 //std::cout << "Our cost was: " << getDelta(before,after) << ". \n";
-                hasBestProduct->timeUntraded = 0;              
+                hasBestProduct->timeUntraded = 0;
                     //money += qtypurchased*(quality of raw)
-                
+
                 //individuals mentor
                 //declare the product for each employee so we can sort based on productivity
                 firm->employeeProductUpdate();
                 std::vector<Individual*> mentors;
                 // get the number of people who will be mentoring
-                int numMentors = (int)(empls.size()*(double)config->get_modicum_of_acceptance()/100.0); 
+                int numMentors = (int)(empls.size()*(double)config->get_modicum_of_acceptance()/100.0);
                 //std::cout << firmindex.at(i)->getemployees().size()<<"\n";
                 firm->sortEmployees();
                 //get the mentors
                 for(int j = 0; j < numMentors;j++){
-                        //a certain percentage of individuals within the firm whose skill sets match the product type most closely 
+                        //a certain percentage of individuals within the firm whose skill sets match the product type most closely
                         //must mentor new individuals who start at an initial age
-                        
+
                         if(!empls.at(j)->isRetired()){
                              mentors.push_back(empls.at(j));
                         }
                 }
                 // mentor new employee for each mentor pair
                 for(int j = 1; j < mentors.size();j++){
-                        Individual* x;  
+                        Individual* x;
                         //They may do this via random skill (bit) selection or via crossover
-                        if(getRandomInt(0,2)) x = new Individual::Individual(mentors.at(j)->skillSet, mentors.at(j-1)->skillSet, false);
+                        if(getRandomInt(0,2)) x = new Individual(mentors.at(j)->skillSet, mentors.at(j-1)->skillSet, false);
                         else{
-                              x = new Individual::Individual(mentors.at(j)->skillSet, mentors.at(j-1)->skillSet, true);
+                              x = new Individual(mentors.at(j)->skillSet, mentors.at(j-1)->skillSet, true);
                             }
                         //"retrain" the least effective employee
                         empls.at(empls.size()-1)->skillSet = mutate(empls.at(empls.size()-1)->skillSet);
-                        firm->employees.push_back(x);                  
+                        firm->employees.push_back(x);
                         all_the_peoples.push_back(x);
-                }               
+                }
 
-                
+
                 Individual* tempEmp;
                 int numFired = 0;
                 //firms may fire individuals
-                
+
                 for(int c = 0; c < empls.size();){
                       double empProductivity = empls.at(c)->getproductivity(firm->companyProduct);
                       if(getDelta(empProductivity,productivity) > hft){
@@ -155,11 +155,11 @@ void BusinessCycle::cycle()
                           empls.erase(empls.begin()+c);
                           unemployed.push_back(tempEmp);
                           numFired++;
-                      }                          
+                      }
                       else c++;
                 }
                 // firms may hire individuals
-                   
+
                 numFired = getRandomInt(0, numFired+1);
                 for(int c = 0; c < unemployed.size() && numFired >0;){
                       double empProductivity = empls.at(c)->getproductivity(firm->companyProduct);
@@ -168,10 +168,10 @@ void BusinessCycle::cycle()
                           unemployed.erase(unemployed.begin()+c);
                           empls.push_back(tempEmp);
                           numFired--;
-                      }                          
+                      }
                       else c++;
                 }
-                //if they are retired, turn them into soylent green.  
+                //if they are retired, turn them into soylent green.
                 for(int c = 0;c < empls.size();){
                       if(empls.at(c)->isRetired()){
                           for(int y = 0; y < all_the_peoples.size();y++){
@@ -184,33 +184,33 @@ void BusinessCycle::cycle()
                       }
                       else c++;
                 }
-                
+
                 if(empls.size() ==0 || firm->timeUntraded > config->get_inactivity_rate()){
-                    
+
                     // lay everyone off if there is anyone there
                     while(!empls.empty()){
                           Individual* temp = empls.back();
-                          empls.pop_back();                          
-                          unemployed.push_back(temp);               
+                          empls.pop_back();
+                          unemployed.push_back(temp);
                     }
                     // remove the firm forever.
                     firmindex.erase(firmindex.begin()+i);
                     i--;
-                } 
+                }
         }
         //get all employees
         for(int j = 0; j < all_the_peoples.size();j++){
                 //iterate their ages
-                all_the_peoples.at(j)->age++;          
+                all_the_peoples.at(j)->age++;
         }
-        
+
         for(int j = 0; j < unemployed.size();j++){
                 //iterate their ages
-                unemployed.at(j)->timeUnemployed++;          
+                unemployed.at(j)->timeUnemployed++;
         }
-        
-        //if they have given up, turn them into soylent green.  
-        for(int c = 0;c < unemployed.size();){  
+
+        //if they have given up, turn them into soylent green.
+        for(int c = 0;c < unemployed.size();){
               if(unemployed.at(c)->timeUnemployed > config->get_inactivity_rate()){
                           for(int y = 0; y < all_the_peoples.size();y++){
                                   if(unemployed.at(c) == all_the_peoples.at(y)){

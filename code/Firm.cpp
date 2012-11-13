@@ -1,7 +1,7 @@
 #include "Firm.h"
 
 Firm::Firm(int avg_starting_capital, int starting_individuals)
-{    
+{
      id = GenerateID();
      //bitset of all 0s
      gType p1 = 0;
@@ -15,7 +15,7 @@ Firm::Firm(int avg_starting_capital, int starting_individuals)
      unitsLeft = 100;
      timeUntraded = 0;
      for(int i = 0 ; i < starting_individuals; i++){
-             employees.push_back(new Individual::Individual());
+             employees.push_back(new Individual());
      }
 }
 int Firm::GenerateID()

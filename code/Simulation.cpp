@@ -21,8 +21,8 @@ bool Simulation::setup(Configurator* configuration){
      //initialize random number function
      srand(time(NULL));
      // number of firms
-     int firmcounter = 0;       
-     
+     int firmcounter = 0;
+
      // pointer to an individual
      Individual* indiepointer;
      // iterator over a vector of individual pointers
@@ -106,7 +106,7 @@ void Simulation::run(){
            cycler->cyclein(cyclesnap);
            std::cout << "cyclein ok" << std::endl;
            // output to screen
-           cyclesnap.print_toscreen();
+           cyclesnap.print_toCSV(counter);
            std::cout << std::endl << "Cycle " << counter + 1 << " completed." << std::endl << std::endl;
            counter++;
     }
