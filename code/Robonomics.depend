@@ -1,0 +1,102 @@
+# depslib dependency file v1.0
+1352746788 source:c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\businesscycle.cpp
+	"BusinessCycle.h"
+
+1352678640 c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\businesscycle.h
+	"Simulation.h"
+	"Snapshot.h"
+	"Firm.h"
+	"Individual.h"
+	"Configurator.h"
+	<vector>
+	<iostream>
+	<algorithm>
+
+1352679012 c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\simulation.h
+	<stdlib.h>
+	<time.h>
+	<vector>
+	<vector>
+	<iostream>
+	<string>
+	"Snapshot.h"
+	"BusinessCycle.h"
+	"Util.h"
+	"Individual.h"
+	"Configurator.h"
+	"Firm.h"
+
+1352600758 c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\snapshot.h
+	"Individual.h"
+	"Firm.h"
+	<iostream>
+	<stdlib.h>
+	<vector>
+	<cstring>
+
+1352734838 c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\individual.h
+	"Types.h"
+	"Util.h"
+	<iostream>
+	<limits.h>
+
+1352571320 c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\types.h
+	<bitset>
+
+1352650012 c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\util.h
+	"Types.h"
+	"Individual.h"
+	<time.h>
+	<vector>
+	<cmath>
+	<stdlib.h>
+	<stdio.h>
+	<string>
+	<bitset>
+	<iostream>
+	<exception>
+	<time.h>
+
+1352744404 c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\firm.h
+	"Util.h"
+	"Individual.h"
+	"Types.h"
+	<limits.h>
+	<iostream>
+	<bitset>
+	<vector>
+	<algorithm>
+
+1352738854 c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\configurator.h
+	<cstdlib>
+	<iostream>
+	<fstream>
+	<string>
+
+1352738858 source:c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\configurator.cpp
+	"Configurator.h"
+
+1352744518 source:c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\firm.cpp
+	"Firm.h"
+
+1352734680 source:c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\individual.cpp
+	"Individual.h"
+
+1352571320 source:c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\real.cpp
+	"Real.h"
+
+1352571320 c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\real.h
+
+1352737044 source:c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\simulation.cpp
+	"Simulation.h"
+
+1352739970 source:c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\snapshot.cpp
+	"Snapshot.h"
+
+1352693532 source:c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\util.cpp
+	"Util.h"
+
+1352590776 source:c:\dropbox\code\school\cmps\cmps_401_survey_of_programming_languages\robonomics\code\main.cpp
+	"Simulation.h"
+	<cstdlib>
+

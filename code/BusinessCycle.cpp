@@ -1,6 +1,6 @@
 #include "BusinessCycle.h"
 
-BusinessCycle::BusinessCycle(std::vector<Firm*> fi, std::vector<Individual*> ii, std::vector<Individual*> transients)
+BusinessCycle::BusinessCycle(std::vector<Firm*> &fi, std::vector<Individual*> &ii, std::vector<Individual*> &transients)
 {
      firmindex = fi;
      all_the_peoples = ii;

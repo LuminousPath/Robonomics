@@ -75,4 +75,7 @@ bool aboveThresh(double x1, double x2, double thresh){
 	return (getDelta(x1,x2)>=thresh);
 }
 
-
+void find_replace(std::string &s, std::string find, std::string replace)
+{
+    s = s.replace(s.find(find), find.length(), replace);
+}

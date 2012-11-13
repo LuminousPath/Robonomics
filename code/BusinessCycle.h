@@ -18,7 +18,7 @@ class BusinessCycle{
             std::vector<Individual*> unemployed;
             Configurator* config;
       public:
-            BusinessCycle(std::vector<Firm*>, std::vector<Individual*>, std::vector<Individual*>);
+            BusinessCycle(std::vector<Firm*> &fi, std::vector<Individual*> &ii, std::vector<Individual*> &transients);
             Snapshot firstcycle();
             Snapshot cycleout();  
             void setConfigurator(Configurator*);

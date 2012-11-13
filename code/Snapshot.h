@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Individual.h"
 #include "Firm.h"
 #include <iostream>
